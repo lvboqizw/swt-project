@@ -1,0 +1,40 @@
+= Protokoll Gruppe 05
+
+Treffen am 19.01.2021
+
+Ort:      Ort des Treffens BBB+
+Beginn:   17:00 Uhr +
+Ende:     17:40 Uhr
+
+__Schriftführer:__ Lukas
+
+*Nächstes Treffen:* +
+27.01.2021, 9:20 Uhr, Ort des nächsten Treffens BBB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- alle
+- Oliver
+
+== Bemerkungen
+keine
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+Musskriterien abgeschlossen
+
+
+
+== Aktueller Stand
+Tests und Developer_doc 
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |Abschlusspräsentation machen     |30 Minuten Präsentation vorbereiten            |alle                |in Arbeit
+|===

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+
+</head>
+
+<body>
+<div class= "ui container">
+    <header>
+        <h1 th:text="#{editorder.title}">Edit Order Assignment</h1>
+    </header>
+
+    <div class="column">
+        <div class="column">
+            <br>
+            <h3 th:text="#{editorder.order}">Order</h3>
+            <table class="ui celled table">      
+                <thead>
+                    <th th:text="${user.name} + ', ' + ${user.forename}">givenname</th>
+                    <th th:text="${order.dateCreated}">datecreated</th>
+                    <th th:text="${order.id}">id</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr th:each="orderline : ${order.orderLines}">
+                        <th th:text="${orderline.productName}">name</th>
+                        <th th:text="${orderline.quantity}">Quantity</th>
+                        <th th:text="${orderline.price}">Preis</th>
+                        <th>
+                            <form class="ui form" method="post" th:action="@{/removeOrderLine}">
+                                <input type="hidden" name="orderlineid" value="0" th:value="${orderline.id}"/>
+                                <input type="hidden" name="assignmentid" value="0" th:value="${assignmentid}"/> 
+                                <button type="submit" class="ui button" th:text="#{editorder.remove}">remove</th>
+                            </form>
+                            
+                    </tr>
+                </tbody>
+            </table>
+            <h3 th:text="'Total: ' + ${order.total} + '€'">Total 30€</h3>
+           <a href="management.html" th:href="@{/management}"><button th:name="#{editorder.back}">back</button></a>
+
+
+
+
+        </div>
+
+        </div>
+    </div>
+
+
+</div>
+</body>
+
+
+
+</html>
+

@@ -1,0 +1,52 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2020/21
+// Auch wenn der Bogen nicht anonymisiert ist, dürfen Sie gern Ihre Meinung offen kundtun.
+// Sowohl positive als auch negative Anmerkungen werden gern gesehen und zur stetigen Verbesserung genutzt.
+// Versuchen Sie in dieser Auswertung also stets sowohl Positives wie auch Negatives zu erwähnen.
+
+**Von:**
+
+Jannek Steinke
+**Gruppe:**
+
+5
+
+== Was habe ich gelernt / was habe ich nicht gelernt?
+// Ausführung der positiven und negativen Erfahrungen, die im Softwarepraktikum gesammelt wurden
+
+* Viel für das Management einer Gruppe, Aufgabenverteilen, Struktur rein bringen
+* Das man doch sehr ins kalte Wasser geschmissen wurde
+* viel Java, Spring und Thymleaf und die Arbeit mit Frameworks gelernt und das das einlesen in die Frameworks mehr Zeit 
+dauert als man denkt
+* was ich nicht gelernt habe ist, wie man ordentlich Dokumentiert
+
+== Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+// Kurze Beschreibung der Zusammenarbeit im Team. Was lief gut? Was war verbesserungswürdig? Was würden Sie das nächste Mal anders machen?
+
+* Es ist wichtig sich gut abzusprechen, nicht das Schnittstellen nicht passen oder Dinge doppelt gemacht werden
+* Es gibt immer Stärken und Schwächen bei Teammitgliedern
+* man sollte Fehler Akzeptieren 
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+// Einschätzung der Arbeit mit den bereitgestellten und zusätzlich genutzten Frameworks. Was War gut? Was war verbesserungswürdig?
+
+* Die Einarbeitung dauert ewig, da man fremden Code verstehen muss
+* Das Framework beschränkt ein aber spart auch ein bisschen Zeit, wenn man es selber schreiben müsste
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+// Möglichst mit Beschreibung, warum die Umsetzung des von Ihnen angebrachten Vorschlages nötig ist.
+
+* wenn man nur 2 Tage die Woche arbeitet hat man die nächste Woche wieder alles vergessen -> also das reinkommen am Anfang des Tage ist sehr schwer
+,Da war das Robolab mit den 10 Tagen deutlich besser
+* Manche Tutorien waren sinnlos da eine Stunde jeder einzelne ausgefragt wurde und der rest nur sinnlos zuhörte
+
+== Feedback für den Tutor
+// Fühlten Sie sich durch den vom Lehrstuhl bereitgestellten Tutor gut betreut? Was war positiv? Was war verbesserungswürdig?
+* Hat oft bei Fragen geholfen aber gegen Ende konnte er uns oft nicht mehr weiterhelfen, wenn es gerade interessant wurde...
+* Ab und zu das Meeting künstlich in die Länge gezogen
+* im Prinzip ist es ja auch gut wenn man viel selber anlesen muss
+
+== Sonstiges und Anmerkungen
+// Welche Aspekte fanden in den oben genannten Punkten keine Erwähnung?
+
+* Man wird bei der Planung ins kalte Wasser geworfen, da man überhaupt noch keinen Plan von der Materie hat, wie die Frameworks so funktionieren
+* Also vielleicht so ein Grundwissen am Anfang vermitteln um besser ins Projekt reinzukommen

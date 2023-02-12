@@ -1,0 +1,68 @@
+= Cross-Testing Feedback
+
+__Durchführende Gruppe:__ 05
+__Anwendung von Gruppe:__ 09
+
+== Getestetes System
+Welche Aufgabe/Problemstellung löst die Anwendung.
+Die Anwendung kreiert ein online Computerstore.
+
+== Fehler-Report
+// See http://asciidoctor.org/docs/user-manual/#tables
+[options="header"]
+|===
+|Pfad |Parameter |Beschreibung |Rückgabe
+|/shop/details/... | Warenkorb hinzufügen | zum Warenkorbhinzufügen-Button funktioniert nicht | Die angeforderte Seite existiert nicht
+| /shop/products | PreisButton | Für normale produkte funktioniert der Preisbutton nicht | Die angeforderte Seite existiert nicht
+| ... | Kontakt/Service | Button in der Nav bar funktionieren nicht | …
+| /user/assignments | Filter  | aufsteigend/absteigend funktioniert nicht | …
+| /employee/product/catalog | White Error Page | … | …
+| … | Telefonnummer | Standard value | Eingabe wird nicht gespeichert
+| … | uft8 | Umlaute werden  nicht dargestellt | nicht identifizierbare Zeichen
+| /employee/product_catalog/create | White Error Page | … | …
+| /user/owned_computers | Anzeige PC-Systeme | Es PC wude gekauft und der Auftrag galt als abgeschlossen, aber es werden immer noch keine in EDV-Bestand angezeigt | "Sie haben noch kein PC System"
+| /employee/finances | White Error Page | … | …
+| /employee/employees/create | White Error Page | … | …
+| ... | Aufgabe angeben und Aufgabe abbrechen | Beide Buttons sind der selbe Knopf, diese Funktion wurde mit der Geschäftsführerin getestet | …
+| … | Order mit 1114 vom selbem Produkt bestellt | Orders wurden als Geschäftsführer bestätigt | Das Lagerhaus hat keinen Alarm gegeben oder die Verkäufe unterbrochen(gibt es überhaupt ein Lagerhaus?)
+| /user/assignments | Auftrag abbrechen | funktioniert nicht | …
+| … | Geschäftskunde  | keinen waren Unterschied zwischen Geschäftskunde und Privatkunde festgestellt | …
+
+
+
+|===
+
+== Sonstiges
+* Optik der Anwendung
+* Fehlende Features
+* Interaktion mit der Anwendung (Usability)
+
+- Registrierung nicht in der navbar
+- Validierung: Telefonnummer(Es können Buschstaben eingegeben werden), Adresse (die Adresse muss keine Straße sein, Eric wird as ok eingestuft)
+
+* fehlende Musskriterien aus der Liste:
+- [F0100] Wir haben bei Geschäftsführerin und Lagerarbeiter keinen Zugang zum Lager gefunden, konnten den Einkaufspreis und Verkaufspreis nicht einsehen
+- [F0101] Haben keine Funktion dafür gefunden
+- [F0102] Keine mögliche Einsicht
+- [F0120](Bestand anzeigen)
+- [F0220] Aufträge werden immer erfüllt
+- [F0301] fragwürdig, weil es immer nur einen Verkaufsleiter geben kann, die Zuweisung neuer Kunden zu neuen Verkaufsleitern kann nicht getestet werden
+- [F0311] Der Bestand wird nicht angezeigt
+- [F0320] nicht möglich
+
+Ihr habt in eurem Pflichtenheft zwei Kategorien von Musskriterien, einmal die in der Tabelle und die in der Liste
+
+* Musskriterien, die aus der Tabelle fehlen:
+- [F0113] Die Filterfunktion der Produkte funktioniert, aber nicht die der assignments
+- [F0114] Da wir das Lager nicht aufrufen konnten ist dieser Bereich auch nicht testbar gewesen
+- [F0130] Bei gigantischen Orders wurde im Lagerhaus kein Alarm ausgelöst. Man kann die maximale Anzahl von 100 Items erhöhen, indem man nach der Auswahl von 100 Items wieder in den Katalog geht und nochmal 100 bestellt. Wir haben mit der Technik 1114 Items von einem Prozessor in einem Warenkorb gehabt und das Bestätigen durch den Mitarbeiter ging problemlos.
+- [F0232] Die Auswahl der verschiedenen Kaufoptionen ist nur ein radio button ohne weitere action
+- [F0234] nicht vorhanden
+- [F0235] nicht vorhanden(wir vermuten, dass sich das hinter dem EDV-Bestand versteckt, aber die gekauften produkte wurden nicht angezeigt)
+- [F0300] bearbeiten und neu Anlegen nicht vorhanden, nur Anzeige möglich; neue Rollenzuweisung ist ebenfalls nicht möglich
+
+
+== Verbesserungsvorschläge
+* Was kann noch weiter verbessert werden?
+
+Eure Seite sicht richtig geil aus, nur fehlen noch die Sachen für das Lager, den Service und die Reparatur.

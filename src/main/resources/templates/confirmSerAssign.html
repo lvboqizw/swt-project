@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <title>answer</title>
+
+</head>
+
+<body>
+<div class= "ui container">
+    <header>
+        <h1>service requests</h1>
+    </header>
+    <nav th:include="navigation :: navigation"></nav>
+
+    <div class="column">
+        <div class="column">
+
+            <table class="ui celled table">
+                <thead>
+                <tr>
+
+                    <th th:text="#{customers.name}">Name</th>
+                    <th th:text="#{confirmSerAssign.question}">Content</th>
+
+                </tr>
+                </thead>
+
+                <tbody th:remove="all-but-first">
+                <tr>
+                    <td th:text="${customer}">none</td>
+                    <td th:text="${confirmSerAssign.question}">none</td>
+
+                </tbody>
+
+            </table>
+            <form class="ui form" method="post" th:action="@{/confirmAnswer}" >
+                <input type="text" name="answer" value="" th:value="${answer}">
+                <input type="hidden" name="id" value="" th:value="${confirmSerAssign.id}">
+                <button type="submit" class="ui button"><span>answer</span>
+                </button>
+            </form><br/>
+
+
+
+
+        </div>
+
+        </div>
+    </div>
+
+
+</div>
+</body>
+
+
+
+</html>
+

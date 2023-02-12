@@ -1,0 +1,52 @@
+= Protokoll Gruppe 05
+
+Treffen am 18.11.2020
+
+Ort:      Ort des Treffens BBB+
+Beginn:   09:20 Uhr +
+Ende:     11:20 Uhr
+
+__Schriftführer:__
+Lukas
+
+*Nächstes Treffen:* +
+25.11.2020, 09:20 Uhr, Ort des nächsten Treffens BBB
+
+__Teilnehmer:__
+
+
+- Oliver
+- das restliche Team
+- ...
+
+== Bemerkungen
+Lukas hat für einen nicht existierenden push eine formale und nichtsbedeutende Verwarnung bekommen.
+- Jannek:Catalog, navbar.html
+- Paul:User
+- Fedor:Lager
+- Sophian:Produkt
+- Zheng Wei:Login
+- Lukas:Order,Cart
+
+== Retrospektive des letzten Sprints
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |Pflichtenheft    |fast abgeschlossen     |in Gruppenarbeit 
+|===
+
+
+== Aktueller Stand
+Pflichtenheft wurde abgenommen
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |Start der Prototypen für alle packages       |in Arbeit     |Eigenarbeit
+|===

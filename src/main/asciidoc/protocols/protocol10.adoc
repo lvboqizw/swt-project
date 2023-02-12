@@ -1,0 +1,62 @@
+= Protokoll Gruppe 05
+
+Treffen am 13.01.2021
+
+Ort:      Ort des Treffens +
+Beginn:   9:20 Uhr +
+Ende:     11:15 Uhr
+
+__Schriftführer:__ Lukas
+
+*Nächstes Treffen:* +
+20.01.2021, 9:20 Uhr, Ort des nächsten Treffens BBB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Jannek
+- Paul
+- Fedor
+- Sophian
+- Lukas
+- Oliver
+- Wei 
+
+== Bemerkungen
+Verwarnung an Jannek und Fedor
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+== Aktueller Stand
+Anmerkungen und Kritik zum aktuellen Stand der Software, den Diagrammen und den
+Dokumenten.
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |löschen    |.vscode, hs_err*.log            |Jannek                |in Arbeit
+|…     |Analysediagramme     |alle mdj Datein in eine packen            |alle                |in Arbeit
+|…     |Protokolle     |umbenennen            |alle                |in Arbeit
+|…     |developer_docomentation     |updaten            |alle                |in Arbeit
+|…     |time_recording     |updaten            |…                |in Arbeit
+|…     |AccountancyContoller     |MonetaryAmount sum, list foreach            |Wei                |in Arbeit
+|…     |Assignment     |Generic orderMAnagement, prints, OrderAssignment if case           |Jannek                |in Arbeit
+|…     |SellAssignment     |Hardware löschen            |Lukas                |in Arbeit
+|…     |StockAssignment     |amountTobeReorderd löschen            |Fedor                |in Arbeit
+|…     |Catalog     |Repository ToDo, Hardware Id löschen, CatalogController Hardware löschen            |Lukas                |in Arbeit
+|…     |PcCustomize     |switch function in methode, Managerklasse hinzufügen, partPicker TypAttribute, listOfPart @SessionAttribute, filter if cases in neue Zeilen, Map für cpu,gpu...        |Lukas                |in Arbeit
+|…     |Management     |management Function kürzen/umschreiben            |Jannek                |in Arbeit
+|…     |Question     |Answer löschen, Question Id überarbeiten, String redundancen           |Sophian                |in Arbeit
+|…     |SalesController     |get Produkt über produktIdentifier -> eine for Schleife löschen          |Lukas                |in Arbeit
+|…     |Hardwarerepository     |change Long to ProductIdentifier            |Lukas                |in Arbeit
+|…     |SalesManager     |löschen            |Lukas                |in Arbeit
+|…     |User     |firstname, lastname über Useraccount, assosiated add Funktionen ändern          |Paul                |in Arbeit
+|…     |Warehouse     |fix the whole reordering            |Fedor                |in Arbeit
+|…     |Test     |einfügen            |alle                |in Arbeit
+|…     |Crosstesting     |zusammen durchgehen            |Paul, Sophian, Lukas                |in Arbeit
+|===

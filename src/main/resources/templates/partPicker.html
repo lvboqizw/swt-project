@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+    <title th:text="#{pc.create.title}">Placeholder</title>
+    <style>
+        .grid-container{
+            display: grid;
+            grid-gap: 100px 100px;
+            grid-template-areas:
+                'main1 main2 main3'
+                'main4 main5 main6'
+                'main10 main7 footer';
+            padding: 10px;
+        }
+
+        .item1 {grid-area: main1}
+        .item2 {grid-area: main2}
+        .item3 {grid-area: main3}
+        .item4 {grid-area: main4}
+        .item5 {grid-area: main5}
+        .item6 {grid-area: main6}
+        .item7 {grid-area: main7}
+        .item8 {grid-area: footer; alignment: center; padding-left: 75px}
+
+        .button-container {
+            position: relative;
+            text-align: center;
+            padding: 0;
+            border-radius:50%;
+            overflow:hidden;
+            display: inline-block;
+            text-decoration: none;
+            vertical-align: middle;
+            background: #8FD8D9;
+        }
+
+        .button-images {
+            max-width: 950px;
+            margin: 75px auto;
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #C4473B;
+            font-family: verdana;
+            font-size: 35px;
+            line-height: 37px;
+        }
+
+        .button-container img{width:100%; height:auto; display:block}
+
+    </style>
+</head>
+
+<body>
+<div class="ui container">
+    <header>
+        <h1 th:text="#{pc.create.title}">Stelle deinen eigenen Pc zusammen</h1>
+    </header>
+    <nav th:include="navigation :: navigation"></nav>
+
+    <div class="grid-container">
+        <!-- 1 -->
+        <div class="item1">
+        <div class="button-images">
+            <div class="button-container">
+                <form method="post" th:action="PcCreate">
+                    <input type="hidden" name="type" th:value="${cpuType}">
+                    <input type="image" width="300px" height="300 px" th:src=" ${cpu} == null ? @{/resources/img/test/cpu.png} : @{/resources/img/test/{image}.png(image=${cpu.image})}" src="../static/resources/img/test/cpu.png" alt="Submit">
+                    <div class="centered" th:text="${cpu} == null ? '' : ${cpu.name}"></div>                </form>
+            </div>
+        </div>
+        </div>
+        <!-- 2 -->
+        <div class="item2">
+            <div class="button-images">
+                <div class="button-container">
+                    <form method="post" th:action="PcCreate">
+                        <input type="hidden" name="type" th:value="${coolerType}">
+                        <input type="image" width="300px" height="300 px" th:src=" ${cooler} == null ? @{/resources/img/test/fan-icon.png} : @{/resources/img/test/{image}.png(image=${cooler.image})}" src="../static/resources/img/test/cpu.png" alt="Submit">
+                        <div class="centered" th:text="${cooler} == null ? '' : ${cooler.name}"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="item3">
+            <div class="button-images">
+                <div class="button-container">
+                    <form method="post" th:action="PcCreate">
+                        <input type="hidden" name="type" th:value="${gpuType}">
+                        <input type="image" width="300px" height="300 px" th:src=" ${gpu} == null ? @{/resources/img/test/gpu.png} : @{/resources/img/test/{image}.png(image=${gpu.image})}" src="../static/resources/img/test/gpu.png" alt="Submit">
+                        <div class="centered" th:text="${gpu} == null ? '' : ${gpu.name}"></div>                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 4 -->
+        <div class="item4">
+            <div class="button-images">
+                <div class="button-container">
+                    <form method="post" th:action="PcCreate">
+                        <input type="hidden" name="type" th:value="${motherboardType}">
+                        <input type="image" width="300px" height="300 px" th:src=" ${motherboard} == null ? @{/resources/img/test/motherboard.png} : @{/resources/img/test/{image}.png(image=${motherboard.image})}" src="../static/resources/img/test/motherboard.png" alt="Submit">
+                        <div class="centered" th:text="${motherboard} == null ? '' : ${motherboard.name}"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="item5">
+            <div class="button-images">
+                <div class="button-container">
+                    <form method="post" th:action="PcCreate">
+                        <input type="hidden" name="type" th:value="${storageType}">
+                        <input type="image" width="300px" height="300 px" th:src=" ${storage} == null ? @{/resources/img/test/storage.png} : @{/resources/img/test/{image}.png(image=${storage.image})}" src="../static/resources/img/test/storage.png" alt="Submit">
+                        <div class="centered" th:text="${storage} == null ? '' : ${storage.name}"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="item6">
+            <div class="button-images">
+                <div class="button-container">
+                    <form method="post" th:action="PcCreate">
+                        <input type="hidden" name="type" th:value="${casesType}">
+                        <input type="image" width="300px" height="300 px" th:src=" ${cases} == null ? @{/resources/img/test/case.png} : @{/resources/img/test/{image}.png(image=${cases.image})}" src="../static/resources/img/test/cases.png" alt="Submit">
+                        <div class="centered" th:text="${cases} == null ? '' : ${cases.name}"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="item7">
+            <div class="button-images">
+                <div class="button-container">
+                    <form method="post" th:action="PcCreate">
+                        <input type="hidden" name="type" th:value="${ramType}">
+                        <input type="image" width="300px" height="300 px" th:src=" ${memory} == null ? @{/resources/img/test/memory.png} : @{/resources/img/test/{image}.png(image=${memory.image})}" src="../static/resources/img/test/memory.png" alt="Submit">
+                        <div class="centered" th:text="${memory} == null ? '' : ${memory.name}"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="item8">
+            <div class="button-images">
+                <div class="button-container">
+                    <form method="post" th:action="@{/addListToCart}" role="form" style="alignment: center">
+                        <input style="alignment: center" type="image" width="150px" height="150px" th:src="@{/resources/img/test/cart.png}" alt="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+    <title th:text="#{pc.create.title}">Placeholder</title>
+</head>
+<body>
+    <div class="ui container">
+        <header>
+            <h1 th:text="pcpcreate.header">Stelle deinen eigenen Pc zusammen</h1>
+        </header>
+        <nav th:include="navigation :: navigation"></nav>
+
+        <div class="ui link cards">
+            <div class="ui card" th:each="part : ${parts}">
+                <div>
+                    <a class="header"  th:text="${part.name}" >name</a>
+                </div>
+                <div class="image" >
+                    <a th:href="@{/hardware/{id}(id=${part.id})}">
+                        <img class="thumbnail" th:src="@{/resources/img/test/{image}.png(image=${part.image})}"
+                             src="../static/resources/img/test/cpu2.png" style="width:290px; height:200px"/>
+                    </a>
+                </div>
+                <div>
+                    <div class="description" th:text="${{part.price}}">1000€</div>
+                </div>
+                <div class="extra content" th:text="${part.producer}">producer</div>
+                <div class="extra content" th:text="${part.type}">Type</div>
+                <div class="extra content" th:text="${part.date}">producer</div>
+                <form method="post" th:action="@{/addItem}" role="form">
+                    <input type="hidden" name="productId" value="0" th:value="${part.id}"/>
+                    <div class="field">
+                        <label th:if="${part.type.toString().equals('RAM') || part.type.toString().equals('DISKDRIVE')} " for="number">Anzahl</label>
+                        <input th:if="${part.type.toString().equals('RAM') || part.type.toString().equals('DISKDRIVE')} " id="number" type="number" name="number" min="1" max="5" step="1" value="1"/><br/>
+                        <input th:unless="${part.type.toString().equals('RAM') && part.type.toString().equals('DISKDRIVE')} " id="number" type="hidden" name="number" value="1">
+
+                    </div>
+                    <button type="submit" class="ui labeled icon button" style="alignment: center">
+                        <i class="add to list icon"></i><span th:text="#{part.addToList}"> Hinzufügen</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

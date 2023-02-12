@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<!--<link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}" />-->
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+		<title th:text="#{accountdetail.title}">Account</title>
+	</head>
+	<body>
+		<div class= "ui container">
+			<header>
+				<h1 th:text="#{accountdetail.title}">Account</h1>
+			</header>
+			<nav th:include="navigation :: navigation"></nav>
+
+			<table class="ui celled table">
+				<thead>
+				<tr>
+					<th th:text="#{accountdetail.username}">Username</th>
+					<th th:text="#{accountdetail.forename}">Firstname</th>
+					<th th:text="#{accountdetail.name}">Lastname</th>
+					<th th:text="#{accountdetail.address}">Anschrift</th>
+					<th th:text="#{accountdetail.email}">Email</th>
+					<th th:text="#{accountdetail.role}">Role</th>
+				</tr>
+				</thead>
+				<tbody th:remove="all-but-first">
+				<tr>
+					<td th:text="${accountdetail.userAccount.username}">none</td>
+					<td th:text="${accountdetail.forename}">none</td>
+					<td th:text="${accountdetail.name}">none</td>
+					<td th:text="${accountdetail.address}">none</td>
+					<td th:text="${accountdetail.userAccount.email}">none</td>
+					<td th:text="${accountdetail.role}">none</td>
+				</tbody>
+			</table><br/>
+
+			<table sec:authorize="hasAnyRole('BusinessCustomer')">
+				<tr>
+					<td th:text="#{assosiated}">Ansprechpartner</td>
+				</tr>
+				<tr th:each=" assosiated : ${assosiated}">
+					<td th:text="${assosiated}">none</td>
+				</tr>
+				<tr>
+					<form class="ui form"  th:action="@{/changeAssosiated}" sec:authorize="hasAnyRole('BusinessCustomer')" >
+					<button type="submit" class="ui button">Change Assosiated</button>
+				</form></tr>
+			</table>
+			<table sec:authorize="hasAnyRole('SalesManager')">
+				<tr>
+					<td th:text="#{assosiated}">Ansprechpartner</td>
+				</tr>
+				<tr th:each=" assosiated : ${assosiated}">
+					<td th:text="${assosiated}">none</td>
+				</tr>
+			</table><br/><br/>
+
+			<table class="ui celled table">
+				<tr><th th:text="#{accountdetail.changelastname}">Change Lastname</th></tr>
+				<tr><form class="ui form" method="post" th:action="@{/changeLastname}" >
+					<td><input type="text" name="changeLastname" value="0" th:value="${changeLastname}" required="required"></td>
+					<td><button type="submit" class="ui labeled icon button"><span th:text="#{accountdetail.changelastname}">Change Lastname</span></button></td>
+			</form></tr></table>
+
+			<table class="ui celled table">
+				<tr><th th:text="#{accountdetail.changefirstname}">Change Firstname</th></tr>
+				<tr><form class="ui form" method="post" th:action="@{/changeFirstname}" >
+					<td><input type="text" name="changeFirstname" value="0" th:value="${changeFirstname}" required="required"></td>
+					<td><button type="submit" class="ui labeled icon button"><span th:text="#{accountdetail.changefirstname}">Change Firstname</span></button></td>
+			</form></tr></table>
+
+			<table class="ui celled table">
+				<tr><th th:text="#{accountdetail.changepassword}">Change Password</th></tr>
+				<tr><form class="ui form" method="post" th:action="@{/changepassword}" >
+					<td><input type="password" name="changepassword" value="0" th:value="${changepassword}" required="required"></td>
+					<td><input type="password" name="matchingpassword" value="0" th:value="${matchingpassword}" required="required"/></td>
+					<td><button type="submit" class="ui labeled icon button"><span th:text="#{accountdetail.changepassword}">Change Password</span></button></td>
+			</form></tr></table>
+
+			<table class="ui celled table">
+				<tr><th th:text="#{accountdetail.changeaddress}">Change Address</th></tr>
+				<tr><form class="ui form" method="post" th:action="@{/changeAddress}" >
+					<td><input type="text" name="changeAddress" value="0" th:value="${changeAddress}" required="required"></td>
+					<td><button type="submit" class="ui labeled icon button"><span th:text="#{accountdetail.changeaddress}">Change Address</span></button></td>
+			</form></tr></table>
+
+			<table class="ui celled table">
+				<tr><th th:text="#{accountdetail.changeemail}">Change Email</th></tr>
+				<tr><form class="ui form" method="post" th:action="@{/changeEmail}" >
+					<td><input type="email" name="changeEmail" value="0" th:value="${changeEmail}" required="required"></td>
+					<td><button type="submit" class="ui labeled icon button"><span th:text="#{accountdetail.changeemail}">Change Email</span></button></td>
+			</form></tr></table>
+
+			<form class="ui form"  th:action="@{/delete}" sec:authorize="hasAnyRole('PrivateCustomer', 'BusinessCustomer')" >
+				<button type="submit" class="ui button">Löschen</button>
+			</form>
+		</div>
+	</body>
+</html>

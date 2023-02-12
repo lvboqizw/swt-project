@@ -1,0 +1,147 @@
+= Test-Plan
+
+Dieser Testplan stellt eine vereinfachte Version der IEEE 829-1998 Vorlage dar.
+
+== Einführung
+für Developer um unsere Tests zu verstehen
+
+== Aufbau der Testbezeichner
+Die Tests sind nach dem Schema: 
+
+* classnameIntegrationTest - IntegrationTest
+* classnameTest - UnitTest
+
+== Test Gegenstände
+* Mock Objekte aus dem Junit Test Framework
+
+== Zu testende Funktionalitäten
+* alle Methoden der von uns geschriebenen Klassen
+
+== Nicht zu testende Funktionalitäten
+* z.B. Bibliotheken von Drittanbietern (eigene Tests beschränken sich auf Schnittstelle, bzw. Zusammenspiel).
+
+== Herangehensweise
+*Bsp.:*
+
+*Klassen werden mit JUnit getestet.*
+
+assignment.AssignmentManagerTest
+
+*Integrationstest nach Bottom-Up Prinzip*
+
+management.ManagementController
+
+== Umgebungsvoraussetzungen
+* Wird spezielle Hardware benötigt?
+* Welche Daten müssen bereitgestellt werden? Wie werden die Daten bereitgestellt?
+* Wird zusätzliche Software für das Testen benötigt?
+* Wie kommuniziert die Software während des Testens? Internet? Netzwerk?
+
+Es wird nur die Hardware benötigt, die man auch um die Anwendung auszuführen brauch. Die benötigten Daten werden in den Tests bereitgestellt. 
+Für das Testen braucht man nur zusätzlich noch das Junittest Framework. Die Software zum Testen ist im Programm schon implementiert und kommuniziert deshalb intern.
+
+== Testfälle und Verantwortlichkeit
+Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
+
+// See http://asciidoctor.org/docs/user-manual/#tables
+[options="headers"]
+|===
+|ID |Anwendungsfall |Vorbedingungen |Eingabe |Ausgabe
+|101|Seite Assignments wird aufgerufen | keine | /assignments aufrufen | Test ist korrekt, wenn assignments zurückgegeben wird  
+|110|OrderAssignment wird hinzugefügt |jemand ist eingeloggt | Order, User existiert als Objekt | ein Assignment wurde dem Repo hinzugefügt
+|111|ServiceAssignment wird hinzugefügt |PrivateCustomer schreibt einen Serviceeintrag| Question existiert als Objekt | ein Assignment wurde dem Repo hinzugefügt
+|112|SellAssignment wird hinzugefügt |PrivateCustomer verkauft Hardware | Hardware, Order existiert als Objekt | ein Assignment wurde dem Repo hinzugefügt
+|113|StockAssignment wird hinzugefügt |die Quantität eines Produktes ist unter einen gegebenen Wert gerutscht | WarehousItem existiert als Objekt | ein Assignment wurde dem Repo hinzugefügt
+|114|RepairAssignment wird hinzugefügt |jemand will was reparieren lassen| RepairItem existiert als Objekt | ein Assignment wurde dem Repo hinzugefügt
+|115|Confirm a Assignment|ein Assignment wurde schon hinzugefügt| Assignment| Die jeweilige Bestätigungsfunktion der Assignments wird ausgeführt
+|120|/management wird aufgerufen|Nur ein Mitarbeiter kann diese Seite aufrufen||"management" als String
+|121|ManagementController ist nicht leer | ein managementController existier| | 
+|201|UserManagement legt einen neuen User an| es wurde ein RegistrationForm angelegt||Erwartet den richtigen UserName für das angelegte Form
+|202|UserManagement legt einen neuen User an| es wurde ein RegistrationForm angelegt||Erwartet den richtigen Nachnamen für das angelegte Form
+|203|UserManagement legt einen neuen User an| es wurde ein RegistrationForm angelegt||Erwartet den richtigen Vornamen für das angelegte Form
+|204|UserManagement legt einen neuen User an| es wurde ein RegistrationForm angelegt||Erwartet das richtige Passwort für das angelegte Form
+|205|UserManagement legt einen neuen User an| es wurde ein RegistrationForm angelegt||Erwartet die richtige E-Mail für das angelegte Form
+|206|UserManagement legt einen neuen User an| es wurde ein RegistrationForm angelegt||Erwartet die richtige Addresse für das angelegte Form
+|207|UserManagement legt einen neuen User an| es wurde ein RegistrationForm angelegt||Erwartet die richtige Rolle für das angelegte Form
+|208|UserManagement legt einen neuen User an| es wurde ein RegistrationForm angelegt||Erwartet das richtige AbgleichsPasswort für das angelegte Form
+|209|ein Mitarbeiter Möchte sich die Kunden Liste anschauen|||Erwartet eine zurückgegebenes Attribut customer
+|210||||
+|211||||
+|212||||
+|213|Wenn sich der Manager auf der Managment seite die Mittarbeiter Liste anschauen möchte|||Erwartet eine zurückgegebenes Attribut manager
+|214|Wenn sich der Manager auf der Managment seite die Mittarbeiter Liste anschauen möchte|Es wurden Worker angelegt||Erwartet eine zurückgegebenes Attribut worker
+|215|Wenn sich der Manager auf der Managment seite die Mittarbeiter Liste anschauen möchte|Es wurden SalesManager angelegt||Erwartet eine zurückgegebenes Attribut salesManager
+|216|Ein Nutzer möchte sich seine Accountdaten ansehen|||Erwartet eine zurückgegebenes Attribut accountdetail
+|217|Ein Nutzer möchte sich selbst Löschen|||Erwartet wird eine Weiterleitung auf logout
+|218|Ein Nutzer ändert sein Passwort|||Es wird erwatet das der Nutzer weider auf seine Accountdetailseite verwiesen wird
+|219|Ein Nutzer ändert seinen Nachnamen|||Es wird erwatet das der Nutzer weider auf seine Accountdetailseite verwiesen wird und der Nachname überschriben wurde mit dem Neuen
+|220|Ein Nutzer ändert seinen Vornamen|||Es wird erwatet das der Nutzer weider auf seine Accountdetailseite verwiesen wird und der Vorname überschriben wurde mit dem Neuen
+|221|Ein Nutzer ändert seinen Addresse|||Es wird erwatet das der Nutzer weider auf seine Accountdetailseite verwiesen wird und der Addresse überschriben wurde mit dem Neuen
+|222|Ein Nutzer ändert seinen ShippingAddress|||Es wird erwatet das der Nutzer weider auf seine Account detail seite verwiesen wird und der ShippingAddress überschriben wurde mit dem Neuen
+|223|Ein Nutzer ändert seinen BillingAddress|||Es wird erwatet das der Nutzer weider auf seine Account detail seite verwiesen wird und der BillingAddress überschriben wurde mit dem Neuen
+|224|Ein Nutzer ändert seinen Email|||Es wird erwatet das der Nutzer weider auf seine Account detail seite verwiesen wird und der Email überschriben wurde mit dem Neuen
+|225|Ein Nutzer Soll hinzugefügt werden|||Der Nutzer wurde Korekt angelegt
+|226|Es sollen alle nutzer ausgegeben werden|||die Liste der Nutzer ist nicht leer
+|227|Es soll ein bestimmter Nutzer Mit einem Nutzer Namen ausgegeben|||der gefundene nutzer ist gleich dem gesuchten
+|228|Es sollen alle Nutzer mit einer bestimmten Rolle ausgegeben werde|||alle nutzer haben die entsprechende Rolle
+|229|Es soll ein User mit einer bestimmten ID ausgegeben werden|der Nuter muss Existieren||die ID des Gesuchten und Gefundenen Stimmen überein
+|230|der Nachname eines Nutzers soll geändet werden|||Der Nachname wurde correct mit dem neuen überschrieben
+|231|Der Vorname eines Nutzers soll geändert werden |||Der Vorname wurde correct mit dem neuen überschreiben
+|232|Die Addresse eines Nutzer soll geändert werden |||Die Addresse wurde correct mit dem neuen überschreiben
+|233|Die BillingAddress eines Nutzers soll geändert werden |||Die BillingAddress wurde correct mit dem neuen überschreiben
+|234|Die Email Nutzers soll geändert werden |||Die Email wurde correct mit dem neuen überschreiben
+|235|Der Rolle eines Nutzers soll geändert werden |||Der Rolle wurde correct mit dem neuen überschreiben
+|236|Ein Nutzer soll abgespeichert werden|||die änderung die am Nutzer vorgennomen wurde correct gespeichert
+|237|Die ID des zu einem nutzer assoziierten Mitarbeiter soll ausgelesen werden|||die ausgegebene ID ist nicht null
+|238|Die Addresse Eines Nutzers soll geändert oder ausgelesen werden|||Die Addresse wurde correct geändert und ausgegeben
+|240|Der UserAccount des Nutzers Soll Ausgegben werde|Ein nutzer mit diesem UserAccount muss angelegt sein||Der UserAccount wurde correct ausgegeben
+|241|Der Voname soll ausgelesen oder geändert werden|||Der Vorname ist nicht null und kann ausgegeben werden
+|242|Der Nachname soll ausgelesen oder geändert werden|||Der Nachname ist nicht null und kann correct geändert werden
+|243|Die Rolle soll ausgegeben werden oder geändert werden|||Die Rolle kann correct ausgelesen und geändert werden
+|244|Die Email soll ausgelesen werden oder geändert werden|||Die Email kann correct ausgelesen und geändert werden
+|245|Die Assosiated ID´s sollen ausgelesen oder bearbeitet werden|||Die ID´s können correct augegeben und bearbeitet werden
+|246|Der Bestätigungs Code soll augegeben werden|||Der code ist nicht null
+|2||||
+|2||||
+|2||||
+|301  |Nutzer liest Catalog aus              |es existiert eine ModelMap              |ExtendedModelMap       |"catalog",nicht leeres Iterable(Inhalt des Catalogs)
+|302|dem PC wird ein Einzelteil hinzugefügt|existierender PC ohne Einzelteile||richtiger Preis nachdem hinzugefügt wurde
+|303|dem PC wird ein Einzelteil entfernt|existierender PC ohne Einzelteile||richtige Anzahl an Einzelteilen
+|304|Berechnung eines PCs|existierender PC ohne Einzelteile||richtiger Preis
+|305|Ein Nutzer möchte einen PC erstellen|es existiert eine ModelMap||die zur Auswahl möglichen teile werden übergeben
+|306|Ein Nutzer wählt ein Einzelteil|leere parts List in pcCustomizeController||Es befindet sich ein korrektes einzelteil in der Liste von parts
+|307|Ein Einzelteil wird hinzugefügt|es existiert eine ModelMap||die länge der ListOfParts ist um die richtige Anzahl gestiegen
+|308|Ein Nutzer sucht nur die nicht Elektronischen teile|es existiert eine ModelMap||"customizePc" gibt eine nicht leere Anzahl an Einzelteilen zurück
+|309|Ein Nutzer beendet den Vorgang|||Der Nutzer wird korrekt zum Cart geleitet
+|310|Startseite der Part Auswahl|es existiert eine ModelMap||Die richtige Anzahl an HardwareType und Hardwareitems
+|311|Nutzer ruft seine Orders auf|||erwarteter Viewname, nicht leeres attribute "order"
+|312|OrderController wird erstellt|EinOrderController muss existieren||True
+|313|Nutzer möchte sein Warenkorb sehen|Logged In Nutzer||richtiger view name
+|314|Nutzer fügt dem Warenkorb ein Produkt hinzu|||Korrekter Viewname
+|315|Nutzer schließt kauf ab|||korrekter redirect link
+|316|checkout wird vom Nutzer bestätigt|||Korrekte Abfolge von redirect zu Checkout, cart wurde geleert
+|317|Dem Warenkorb wird von einer Sache mehr hinzugefügt|||korrekter Viewname
+|318|Der Nutzer löscht ein item aus dem Warenkorb|||korrekter Viewname
+|401|Sperren der Anmeldung von nicht autorisierten Benutzern|||"/login"
+|402|Der Zugriff vom Benutzer mit "Manager"-Role|||"/accountancy"
+|403|Zugriff auf der Webseite mit einer Eigenschaft "form"||Model, SearchForm|"accountancy", Attribute in Model mit Name "form"
+|404|Send Ergebnisse vom Such zu Webseite, fasst alle Informationen zusammen||Model, SearchForm|"accountancy". Die Ergebnisse der Suche
+|405|Such nach alle Protokolle von Buchhaltung|||nicht leer Streamable
+|406|Such im bestimmten Zeitraum ohne Benutzername||SearchForm|nicht leer Streamable
+|407|Such nur mit Startdatum||SearchForm|nicht leer Streamable
+|408|Such im bestimmten Zeitraum mit unterschiedlichem Suchraum||SearchForm|nicht leer Streamable
+|409|Such nur mit Benutzername||SearchForm|nicht leer Streamable
+|410|Such mit Benutzername und unterschiedlichen Suchraum||SearchForm|nicht leer Streamable
+|411|Such mit Benutzername und Zeitraum||SearchForm|nicht leer Streamable
+|412|Such mit Benutzername, Zeitraum und Suchraum||SearchForm|nicht leer Streamable
+|413|Löschen Protokolle vom bestimmten Benutzer||User|true
+|501|Nutzer ruft Service Seite auf|||korrekter Viewname
+|502|Nutzer öffnet Forum|Logged In Kunde|Model|korrekter Viewname
+|503|Nutzer sendet eine Nachricht||Form|nicht leer, korrekter Viewname
+|504|Mitarbeiter beantwortet Frage|||nicht leer, korrekter Viewname
+|505|Nutzer öffnet Repair Seite|Logged In Kunde|Model|korrekter Viewname
+|506|Nutzer sendet Reparaturanfrage||Form|nicht leer, korrekter Viewname
+|507|Nutzer wird Bestätigung angezeigt|||korrekter Viewname
+|508|Mitarbeiter bestätigt Reparaturanfrage|||korrekter Viewname
+
+|===

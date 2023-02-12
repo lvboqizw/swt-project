@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}" />-->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+    <title th:text="#{cart.title}">Warenkorb</title>
+    <style>
+        div1{
+          background-color: lightgrey;
+          width: 290px;
+          border: 5px solid black;
+          padding: 10px;
+          margin: 20px;
+        }
+        div2{
+          margin: 10px;
+        }
+        p {
+        font-size: 20px;
+        position: relative;
+        left: 50px;
+        top: 2px
+        }
+        </style>
+</head>
+<body>
+<div class="ui container">
+    <header>
+        <h1 th:text="#{cart.title}">Warenkorb</h1>
+    </header>
+    <nav th:include="navigation :: navigation"></nav>
+
+    <div>
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th th:text="#{cart.productName}">Name</th>
+                <th th:text="#{cart.count}">Anzahl</th>
+                <th th:text="#{cart.price}">Preis</th>
+                <th th:text="#{cart.countChange}">bearbeiten</th>
+            </tr>
+            </thead>
+            <tbody th:remove="all-but-first">
+
+            <tr th:each="item : ${cart} ">
+                <td th:text="${item.productName}">placeholderItemName</td>
+                <td th:text="${item.quantity}">placeholderItemQuantity</td>
+                <td th:text="${{item.price}}">placeholderItemPrice</td>
+                <td> <form th:action="@{/delete}" method="post" role="form">
+                    <button type="submit" name = "item" th:value="${item.id}">Löschen</button></form></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="ui two column centered grid">
+        <div class="four column centered row">
+            <div class="ui column">
+                <div1 class="ui horizontal statistic">
+                    <div class="label" th:text="#{cart.subtotal}">SubTotal</div>
+                    <div2 class="value">
+                        <p th:text="${{cart.price}}">1337</p>
+                    </div2>
+                </div1>
+            </div>
+            <div class="column">
+                <br>
+                <br>
+                <form sec:authorize="hasRole('PrivateCustomer')" class="ui form" method="get" th:action="@{/confirmCheckout}">
+                    <input type="hidden" name="businesscustomer" value="lol" th:value="${businesscustomer}"/>
+                    <button type="submit" class="ui button" th:text="#{cart.buy}">zur Kasse</button>
+                </form>
+                <form sec:authorize="hasRole('BusinessCustomer')" class="ui form" method="post" th:action="@{/checkout}">
+                    <input type="hidden" name="businesscustomer" value="lol" th:value="${businesscustomer}"/>
+                    <button type="submit" class="ui button" th:text="#{cart.business}">bestellen</button>
+                </form>
+                <form sec:authorize="hasAnyRole('Worker', 'SalesManager', 'Manager')" class="ui form" method="post" th:action="@{/checkout}">
+                    <input type="text" name="businesscustomer" placeholder="businesscustomer" value="0" required="required" th:value="${businesscustomer}">
+                    <button type="submit" class="ui button" th:text="#{cart.compu}">order for businessCustomer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

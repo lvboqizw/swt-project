@@ -1,0 +1,36 @@
+= Protokoll Gruppe 05
+
+Treffen am 25.11.2020
+
+Ort:      Ort des Treffens BBB+
+Beginn:   9:23 Uhr +
+Ende:     10:50 Uhr
+
+__Schriftführer:__ Lukas
+
+*Nächstes Treffen:* +
+2.11.2020, 9:20 Uhr, Ort des nächsten Treffens BBB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Oliver
+- das gesamte Team
+
+== Bemerkungen
+Verwarnungen, besondere Vorfälle, Organisatorisches, wichtige getroffene Entscheidungen
+
+== Aktueller Stand
+Anmerkungen und Kritik zum aktuellen Stand der Software, den Diagrammen und den
+Dokumenten.
+
+Prototyp in Anfängen funktionierend
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |Prototyp    |alle packages in Prototyp mergen          |alle                |in Arbeit
+|===

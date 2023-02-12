@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <title>make repair request</title>
+</head>
+<body>
+<div class="ui container">
+    <header>
+        <h1>Repair Request</h1>
+    </header>
+    <nav th:include="navigation :: navigation"></nav>
+
+    <div class="column">
+        <div class="column">
+            <div class="column">
+
+                <table class="ui celled table">
+
+                    <thead>
+                    <tr>
+                        <th th:text="#{repairRequest.name}">Name</th>
+                        <th th:text="#{repairRequest.state}">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody th:remove="all-but-first">
+                    <tr th:each="assignment : ${myRepairRequests} ">
+                        <td th:text="${assignment.repairItem.name}">none</td>
+                        <td th:text="${assignment.state}">none</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="column">
+            <form sec:authorize="hasRole('PrivateCustomer')" class="ui form" method="post" th:action="@{/sendRepairRequest}">
+
+                <p>Please select the correct hardware type</p>
+                <td><select id="type" name="type">
+                    <option th:value="PROCESSOR" th:text="Processor">Prozessor</option>
+                    <option th:value="DISKDRIVE" th:text="Discdrive">Diskdrive</option>
+                    <option th:value="RAM" th:text="RAM">RAM</option>
+                    <option th:value="COOLING" th:text="Cooler">Cooler</option>
+                    <option th:value="MAINBOARD" th:text="Mainboard">Mainboard</option>
+                    <option th:value="GPU" th:text="GPU">GPU</option>
+                    <option th:value="PC" th:text="PC">PC</option>
+                </select></td>
+
+                <p>Name of product</p>
+                <input type="text" name="name" value="" th:value="${name}" required>
+
+                <p>Did you buy the product at Computech?</p>
+                <td><select id="boughtHere" name="boughtHere">
+                    <option th:value="Ja" th:text="yes">Ja</option>
+                    <option th:value="Nein" th:text="no">Nein</option>
+                </select></td>
+
+                <p>Describe the issues your product is having</p>
+                <input type="text" name="flaw" value="" th:value="${flaw}" required>
+
+                <p>Does your product have valid warranty?</p>
+                <td><select id="warranty" name="warranty">
+                    <option th:value="Ja" th:text="yes">Ja</option>
+                    <option th:value="Nein" th:text="no">Nein</option>
+                </select></td>
+
+                <p>When did you buy the product?</p>
+                <th th:text="year">Year</th>
+                <input id="year" type="number" name="year" min="2000" max="2021" step="1" value="2021"/><br/>
+                <th th:text="month">Month</th>
+                <input id="month" type="number" name="month" min="1" max="12" step="1" value="2"/><br/>
+
+                <button type="submit" class="ui button"><span>submit</span>
+                </button>
+            </form><br/>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+= Protokoll Gruppe 05
+
+Treffen am 9.12.2020
+
+Ort:      Ort des Treffens BBB+
+Beginn:   9:20 Uhr +
+Ende:     11:24
+Uhr
+
+__Schriftführer:__  Lukas
+
+*Nächstes Treffen:* +
+14.12.2020, 18:00 Uhr, Ort des nächsten Treffens
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- alle Teammitglieder
+
+== Bemerkungen
+Verwarnungen, besondere Vorfälle, Organisatorisches, wichtige getroffene Entscheidungen
+
+== Retrospektive des letzten Sprints
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |developer_documentation beenden       |fertig     |ist nun wöchentlich zu verändern 
+|===
+
+
+== Aktueller Stand
+nicht akzeptabel für 6 personen, es wird zu wenig zeit reingesteckt. 
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |Midterm Präsentation     |Präsentation vorbereiten und Testcase vorbereiten           |alle                |in Arbeit
+|…  |Funktionalität aufrüsten   |jeder muss da mehr coden  |alle  |in Arbeit
+
+
+|===

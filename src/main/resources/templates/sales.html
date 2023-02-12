@@ -1,0 +1,91 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:float="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <style>
+        .tableItem{
+            display: inline-table;
+            float: left;
+        }
+    </style>
+    <title th:text="#{sales.title}">Sales</title>
+</head>
+<body>
+<div class="ui container">
+    <header>
+        <h1 th:text="#{sales.sales}">Sales</h1>
+    </header>
+
+    <nav th:include="navigation :: navigation"></nav>
+
+    <div class="my-5">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col" th:text="#{sales.date}">Date</th>
+                <th scope="col" th:text="#{sales.productName}">ProductName</th>
+                <th scope="col" th:text="#{sales.quantity}">Quantity</th>
+                <th scope="col" th:text="#{sales.price}">Price</th>
+                <th scope="col" th:text="#{sales.status}">status</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orderList}">
+                <td th:text="${#temporals.format(order.getDateCreated(), 'dd.MM.yyyy HH:mm')}">Date</td>
+                <td >
+                    <ul th:each="orderLine : ${order.getOrderLines()}">
+                        <li th:text="${orderLine.getProductName()}" >ProductName</li>
+                    </ul>
+                </td>
+                <td >
+                    <ul th:each="orderLine : ${order.getOrderLines()}">
+                        <li th:text="${orderLine.getQuantity()}">Quantity</li>
+                    </ul>
+                </td>
+                <td >
+                    <ul th:each="orderLine : ${order.getOrderLines()}">
+                        <li th:text="${orderLine.getPrice().abs()}">Price</li>
+                    </ul>
+                </td>
+                <td >
+                    <ul th:each="orderLine : ${order.getOrderLines()}">
+                        <li th:if="${orderLine.getPrice().isPositiveOrZero()}" th:text="#{sales.buy}">Buy</li>
+                        <li th:unless="${orderLine.getPrice().isPositiveOrZero()}" th:text="#{sales.sale}">Sale</li>
+                    </ul>
+                </td>
+
+                <td >
+                    <ul th:each="orderLine : ${order.getOrderLines()}" >
+                    <div class="tableItem" th:if="${orderLine.getPrice().isPositiveOrZero()}">
+                        <form method="post" th:action="@{/submitSale}">
+                            <input type="hidden" name="orderLine" value="0" th:value="${orderLine.getId()}">
+                            <input type="hidden" name="order" value="0" th:value="${order.getId()}">
+                            <input id="number" type="number" name="number" min="1" th:max="${orderLine.getQuantity()}" step="1" value="1"/>
+                            <button style="display: inline-table" type="submit" class="ui button mx-0" th:text="#{sales.salesButton}">Verkaufen</button>
+                            </form>
+                        </div>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2020/21
+// Auch wenn der Bogen nicht anonymisiert ist, dürfen Sie gern Ihre Meinung offen kundtun.
+// Sowohl positive als auch negative Anmerkungen werden gern gesehen und zur stetigen Verbesserung genutzt.
+// Versuchen Sie in dieser Auswertung also stets sowohl Positives wie auch Negatives zu erwähnen.
+
+**Von:**
+
+Wei Zheng
+**Gruppe:**
+5
+
+== Was habe ich gelernt / was habe ich nicht gelernt?
+// Ausführung der positiven und negativen Erfahrungen, die im Softwarepraktikum gesammelt wurden
+* Ich habe viele Java, SpringBoot, html sowie Thymleaf gelernt.
+* Komplette Erfahrung einer Webseite vom Entwurf bis zur Implementierung
+
+== Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+// Kurze Beschreibung der Zusammenarbeit im Team. Was lief gut? Was war verbesserungswürdig? Was würden Sie das nächste Mal anders machen?
+* Man muss rechtzeitig mit Team zusammen diskutieren, um die richtige Richtung von Arbeit zu haben.
+* Teamarbeit ist manchmal effizienter als Einzelforschung
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+// Einschätzung der Arbeit mit den bereitgestellten und zusätzlich genutzten Frameworks. Was War gut? Was war verbesserungswürdig?
+* Ein gut Frameworks kann die Arbeit effizienter machen.
+* Bevor man ein großes Programm macht, ist es ganz wichtig ein Framework vom Programm haben.
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+// Möglichst mit Beschreibung, warum die Umsetzung des von Ihnen angebrachten Vorschlages nötig ist.
+* Wenn es möglich ist, wäre ein kontinuierlicher Zyklus von Experimenten besser.
+
+== Feedback für den Tutor
+// Fühlten Sie sich durch den vom Lehrstuhl bereitgestellten Tutor gut betreut? Was war positiv? Was war verbesserungswürdig?
+* Hat uns sehr viele geholfen.
+* Die Arbeitszeit kann nicht direct durch Code gesehen werden, weil man auch Zeit für Lernen braucht.
+
+== Sonstiges und Anmerkungen
+// Welche Aspekte fanden in den oben genannten Punkten keine Erwähnung?
+* Von Videoshop bis den Anfang von Project gibt es eine große Spannweite. Man kann noch
+nicht gut das Framework verstehen, wie es funktioniert, muss man weitere Arbeit machen. Es
+kann ein großes Problem vom Project und zusätzliche Arbeit führen.

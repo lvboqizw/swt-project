@@ -1,0 +1,42 @@
+= Zeiterfassung für Gruppe 05
+
+Notieren Sie die Zeit in Minuten für jeden Entwickler und – getrennt davon – für Team-Treffen pro Woche (Wochengranularität).
+Die individuell erfasste Zeit beinhaltet auch das Lesen von Dokumentationen, Besprechungen mit Teamkollegen und sonstige auf das Praktikum bezogene Aufgaben, jedoch *nicht* das Team-Treffen (= letzte Spalte).
+
+// See http://asciidoctor.org/docs/user-manual/#tables
+[option="headers"]
+|===
+|Woche |Jannek |Lukas |Fedor |Sophian |Paul |Zheng Wei |Meeting
+|1  |360   |900    |900    |180    |360    |900    |180    
+|2  |560   |800    |800    |540    |760    |720    |90
+|3  |1050   |920    |600    |900    |710    |720    |90
+|4  |320   |270    |600    |180    |200    |500    |120   
+|5  |720   |360    |400    |280   |750    |360   |90    
+|6  |610   |800    |120    |480    |130    |180   |90
+|7  |1440  |1370    |1200    |500    |1050    |1080    |90    
+|8  |0   |210    |100    |200    |0   |210    |210
+|9  |1050   |960    |1200    |900    |666    |600    |70
+|10  |540   |500    |1000    |500    |460    |260    |85
+|11  |960   |720    |500    |550    |500    |380    |65
+|12  |960 |800    |600    |600    |600    |600    |115
+|===
+
+Bitte tragen Sie am Ende des Praktikums noch folgende weitere Werte ein:
+Summe der Arbeitsstunden pro Student:
+
+|===
+|Jannek |Lukas |Fedor |Sophian |Paul |Zheng Wei
+|154.41	|161.75	|155.25	|118.416	|124.68	|130.083
+|===
+
+Arbeitsstunden pro Woche pro Student:
+
+|===
+|Jannek |Lukas |Fedor |Sophian |Paul |Zheng Wei
+|13.70 |13.75	|12.94	|9.86	|10.39	|10.84
+|===
+
+
+Durchschnittliche Arbeitzeit in Stunden aller Studenten pro Woche:
+11.915
+

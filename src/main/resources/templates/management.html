@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<!--<link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}" />-->
+
+		<script th:src="@{/webjars/jquery/jquery.min.js}"
+				src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+		<script th:src="@{/js/index.js}"></script>
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+		<title th:text="#{management.title}">Computech Management</title>
+	</head>
+	<body>
+		<div class= "ui container">
+			<header>
+				<h1 th:text="#{management.title}">Computech Management</h1>
+			</header>
+			<nav th:include="navigation :: navigation"></nav>
+
+			<!-- Show all Employees-->
+			<div sec:authorize="hasAnyRole('Manager')">
+				<h3 th:text="#{management.employees}">Employees</h3>
+					<table class="ui celled table" >
+						<thead>
+						<tr>
+							<th th:text="#{management.name}">Name</th>
+							<th th:text="#{management.id}">id</th>
+							<th th:text="#{management.address}">Anschrift</th>
+							<th th:text="#{management.role}">Rolle</th>
+							<th></th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr th:each=" worker : ${workers}">
+							<td th:text="${worker.name} + ', ' + ${worker.forename}">Name</td>
+							<td th:text="${worker.id}">id</td>
+							<td th:text="${worker.address}">address</td>
+							<td th:text="${worker.role}">SalesManager</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/managementchangeRole}" >
+									<input type="hidden" name="id" value="0" th:value="${worker.id}"/>
+									<select name="changeRole" value  th:value="${changeRole}">
+										<option value="PrivateCustomer" >PrivateCustomer</option>
+										<option value="BusinessCustomer" >BusinessCustomer</option>
+										<option value="SalesManager" >SalesManager</option>
+										<option value="Manager" >Manager</option>
+										<option value="Worker" >Worker</option>
+									</select>
+									<button type="submit" class="ui labeled icon button"><span th:text="#{management.changerole}">Role ändern</span>
+									</button>
+								</form>
+							</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/manageDel}" >
+								<input type="hidden" name="id" value="0" th:value="${worker.id}"/>
+								<button type="submit" class="ui labeled icon button">
+									<span th:text="#{management.delete}"> 
+										delete</span>
+								</button>
+							</form>
+							</td>
+						</tr>
+						<tr th:each=" salesmanager : ${salesmanagers}">
+							<td th:text="${salesmanager.name} + ', ' + ${salesmanager.forename}">Name</td>
+							<td th:text="${salesmanager.id}">id</td>
+							<td th:text="${salesmanager.address}">address</td>
+							<td th:text="${salesmanager.role}">SalesManager</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/managementchangeRole}" >
+									<input type="hidden" name="id" value="0" th:value="${salesmanager.id}"/>
+									<select name="changeRole" value  th:value="${changeRole}">
+										<option value="PrivateCustomer" >PrivateCustomer</option>
+										<option value="BusinessCustomer" >BusinessCustomer</option>
+										<option value="SalesManager" >SalesManager</option>
+										<option value="Manager" >Manager</option>
+										<option value="Worker" >Worker</option>
+									</select>
+									<button type="submit" class="ui labeled icon button"><span th:text="#{management.changerole}">Role ändern</span>
+									</button>
+								</form>
+							</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/manageDel}" >
+								<input type="hidden" name="id" value="0" th:value="${salesmanager.id}"/>
+								<button type="submit" class="ui labeled icon button">
+									<span th:text="#{management.delete}"> 
+										delete</span>
+								</button>
+							</form>
+							</td>
+						</tr>
+						<tr th:each=" manager : ${manager}">
+							<td th:text="${manager.name} + ', ' + ${manager.forename}">Name</td>
+							<td th:text="${manager.id}">id</td>
+							<td th:text="${manager.address}">address</td>
+							<td th:text="${manager.role}">SalesManager</td>
+							<td th:if="${number == '1'}">
+								<form class="ui form" method="post" th:action="@{/managementchangeRole}" >
+									<input type="hidden" name="id" value="0" th:value="${manager.id}"/>
+									<select name="changeRole" value  th:value="${changeRole}">
+										<option value="PrivateCustomer" >PrivateCustomer</option>
+										<option value="BusinessCustomer" >BusinessCustomer</option>
+										<option value="SalesManager" >SalesManager</option>
+										<option value="Manager" >Manager</option>
+										<option value="Worker" >Worker</option>
+									</select>
+									<button type="submit" class="ui labeled icon button"><span>Role ändern</span>
+									</button>
+								</form>
+							</td>
+							<td th:if="${number == '1'}">
+								<form class="ui form" method="post" th:action="@{/manageDel}" >
+									<input type="hidden" name="id" value="0" th:value="${manager.id}"/>
+									<button type="submit" class="ui labeled icon button">
+									<span th:text="#{management.delete}">
+										delete</span>
+									</button>
+								</form>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+			</div>
+			<br>
+			<br>
+			<!-- add an Employee-->
+            <div sec:authorize="hasAnyRole('Manager')">
+				<h3 th:text="#{management.addemployees}">Employees</h3>
+				<form class="ui form" method="post" th:action="@{/manageAddEmployee}" >
+					<table class="ui celled table" >
+						<thead>
+						<tr>
+							<th th:text="#{management.name}">Name</th>
+							<th th:text="#{management.forename}">id</th>
+							<th th:text="#{management.address}">Anschrift</th>
+							<th th:text="#{management.email}">Email</th>
+							<th th:text="#{management.username}">Username</th>
+							<th th:text="#{management.password}">Password</th>
+							<th th:text="#{management.matchingpassword}">Password bestätigen</th>
+							<th th:text="#{management.role}">Rolle</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td><input type="text" id="name" name="name" /></td>
+							<td><input type="text" id="forename" name="forename" /></td>
+							<td><input type="text" id="address" name="address" /></td>
+							<td><input type="text" id="email" name="email" /></td>
+							<td><input type="text" id="userName" name="userName" /></td>
+							<td><input type="text" id="password" name="password" /></td>
+							<td><input type="text" id="matchingpassword" name="matchingpassword" /></td>
+							<td>
+								<select name="role" id="role">
+									<option value="Worker">Worker</option>
+									<option value="SalesManager">SalesManager</option>
+									<option value="Manager">Manager</option>
+								</select>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					<button type="submit" class="ui labeled icon button">
+						<span th:text="#{management.add}"> add </span>
+					</button>
+				</form>
+			</div>
+			<br>
+			<br>
+			<!-- Control and Confirm Assignments -->
+			<div sec:authorize="hasAnyRole('SalesManager', 'Manager')">
+				<h3 th:text="#{management.assignment}">Assignments</h3>
+					<table class="ui celled table" >
+						<thead>
+						<tr>
+							<th th:text="#{management.type}">type</th>
+							<th th:text="#{management.id}">id</th>
+							<th th:text="#{management.state}">state</th>
+							<th th:text="#{management.delete}">delete</th>
+							<th th:text="#{management.confirm}">confirm</th>
+						</tr>
+						</thead>
+						<tbody>
+						<!-- read all order assignments-->
+						<tr th:each=" assignment : ${pAssignments}">	
+							<td th:text="${assignment.type}">Type</td>
+							<td th:text="${assignment.id}">ID</td>
+							<td th:text="${assignment.state}">state</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/deleteAssign}" >
+									<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/> 
+									<button type="submit" class="ui labeled icon button">
+										<span th:text="#{management.delete}"> 
+											confirm</span>
+									</button>
+								</form>
+							</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/confirmAssign}" >
+								<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/> 
+								<button type="submit" class="ui labeled icon button">
+									<span th:text="#{management.confirm}"> 
+										confirm</span>
+								</button>
+							</form>
+							</td>
+						</tr>
+						<tr th:each=" assignment : ${bAssignments}">	
+							<td th:text="${assignment.type}">Type</td>
+							<td th:text="${assignment.id}">ID</td>
+							<td th:text="${assignment.state}">state</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/deleteAssign}" >
+									<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/> 
+									<button type="submit" class="ui labeled icon button">
+										<span th:text="#{management.delete}"> 
+											confirm</span>
+									</button>
+								</form>
+								<form class="ui form" method="post" th:action="@{/editAssign}" >
+									<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/>
+									<button type="submit" class="ui labeled icon button">
+										<span th:text="#{management.edit}"> 
+											confirm</span>
+									</button>
+								</form>
+							</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/confirmAssign}" >
+								<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/> 
+								<button type="submit" class="ui labeled icon button">
+									<span th:text="#{management.confirm}"> 
+										confirm</span>
+								</button>
+							</form>
+							</td>
+						</tr>
+						<!-- read all service assignments-->
+						<tr th:each=" assignment : ${serAssignments}">	
+							<td th:text="${assignment.type}">Type</td>
+							<td th:text="${assignment.id}">ID</td>
+							<td th:text="${assignment.state}">state</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/deleteAssign}" >
+									<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/>
+									<button type="submit" class="ui button">
+										<span th:text="#{management.delete}"> 
+											delete</span>
+									</button>
+								</form>
+							</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/confirmSerAssign}" >
+								<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/>
+									<button type="submit" class="ui button">
+									<span th:text="#{management.confirmservice}"> 
+										confirm</span>
+								</button>
+								</form>
+							</td>
+						</tr>
+
+						<!-- read all repair assignments-->
+						<tr th:each=" assignment : ${repAssignments}">
+							<td th:text="${assignment.type}">Type</td>
+							<td th:text="${assignment.id}">ID</td>
+							<td th:text="${assignment.state}">state</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/deleteAssign}" >
+									<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/>
+									<button type="submit" class="ui button">
+										<span th:text="delete">
+											confirm</span>
+									</button>
+								</form>
+							</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/confirmRepAssign}" >
+									<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/>
+									<button type="submit" class="ui button">
+									<span th:text="view">
+										confirm</span>
+									</button>
+								</form>
+							</td>
+						</tr>
+
+						<!-- read all sell assignments-->
+						<tr th:each=" assignment : ${selAssignments}">	
+							<td th:text="${assignment.type}">Type</td>
+							<td th:text="${assignment.id}">ID</td>
+							<td th:text="${assignment.state}">state</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/deleteAssign}" >
+									<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/> 
+									<button type="submit" class="ui labeled icon button">
+										<span th:text="#{management.delete}"> 
+											confirm</span>
+									</button>
+								</form>
+							</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/confirmSelAssign}" >
+								<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/> 
+								<button type="submit" class="ui button">
+									<span th:text="#{management.confirmsell}"> 
+										confirm</span>
+								</button>
+								</form>
+							</td>
+							<td th:unless="${assignment.state == open}"></td>
+						</tr>
+						<!-- read all stock assignments-->
+						<tr th:each=" assignment : ${stoAssignments}">	
+							<td th:text="${assignment.type}">Type</td>
+							<td th:text="${assignment.id}">ID</td>
+							<td th:text="${assignment.state}">state</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/deleteAssign}" >
+								<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/> 
+								<button type="submit" class="ui button">
+									<span th:text="#{management.deletestock}">
+										Deny</span>
+								</button>
+								</form>
+							</td>
+							<td>
+								<form class="ui form" method="post" th:action="@{/confirmStoAssign}" >
+									<input type="hidden" name="assignmentid" value="0" th:value="${assignment.id}"/> 
+									<button type="submit" class="ui labeled icon button">
+										<span th:text="#{management.confirmstock}"> 
+											confirm</span>
+								</button>
+								</form>
+							</td>
+							<td th:unless="${assignment.state == open}"></td>
+						</tr>
+						</tbody>
+					</table>
+			</div>
+			<br>
+			<br>
+			
+			<!-- show all products-->
+			<div sec:authorize="hasAnyRole('SalesManager', 'Manager')">
+				<h3 th:text="#{management.products}">Products</h3>
+
+                <table class="ui celled table" >
+                    <thead>
+                    <tr>
+                        <th th:text="#{management.name}">productName</th>
+                        <th th:text="#{management.productprice}">productPrice</th>
+                        <th th:text="#{management.quantity}">quantityItem</th>
+                        <th th:text="#{management.minquantity}">Quantity</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="item : ${products}">
+
+                        <form id="updateitems" method="get" th:action="@{/updateItem}" ><input type="hidden" name="id" value="1" />
+                            <td><input class="text" type="text" th:value="${item.product.name}" id="productName" name="productName" /></td>
+                            <td><input  class="text" type="text" th:value="${item.product.price}" id="productPrice" name="productPrice"/></td>
+                            <td><input  class="text" type="text" th:value="${item.quantity}" id="quantityItem" name="quantityItem"/></td>
+                            <td><input  name="minquantityItem" id="minquantityItem"  th:value="${item.MinQuantity}"/></td>
+                            <input  type="hidden" name="inventoryIdentifier" id="inventoryIdentifier" th:value="${item.id}"/>
+                            <td><input type="checkbox" name="active" id="active" th:checked="${item.product.InCatalogshown}" /></td>
+                            <td><button type="submit" class="ui labeled icon button" name = "updateItem" th:text="#{management.updateItem}"> </button></td>
+
+                        </form>
+
+                        <td>
+                            <form th:action="@{/deleteWarehouseItem/{id_del}/(id_del=${item.id})}" method="post" role="form" class="ui form">
+                                <button type="submit" class="ui labeled icon button" name = "itemDel" th:value="${item.id}" th:text="#{management.delete}">Löschen</button>
+                            </form>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+				
+			</div>
+			<br>
+			<br>
+			<!-- adding a Business Customer Form-->
+			<div sec:authorize="hasAnyRole('Manager' , 'SalesManager', 'Worker')">
+                <h3 th:text="#{management.addbusiness}">add BusinessCustomer</h3>
+				<form class="ui form" method="post" th:action="@{/manageAddCustomer}" >
+					<table class="ui celled table" >
+						<thead>
+						<tr>
+							<th th:text="#{management.name}">Name</th>
+							<th th:text="#{management.forename}">id</th>
+							<th th:text="#{management.address}">Anschrift</th>
+							<th th:text="#{management.email}">Email</th>
+							<th th:text="#{management.username}">Username</th>
+							<th th:text="#{management.password}">Password</th>
+							<th th:text="#{management.matchingpassword}">Password bestätigen</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td><input type="text" id="name" name="name" /></td>
+							<td><input type="text" id="forename" name="forename" /></td>
+							<td><input type="text" id="address" name="address" /></td>
+							<td><input type="text" id="email" name="email" /></td>
+							<td><input type="text" id="userName" name="userName" /></td>
+							<td><input type="text" id="password" name="password" /></td>
+							<td><input type="text" id="matchingpassword" name="matchingpassword" /></td>
+						</tr>
+						</tbody>
+					</table>
+					<input type="hidden" name="role" value="BusinessCustomer" />
+					<button type="submit" class="ui labeled icon button">
+						<span th:text="#{management.add}"> add
+					</button>
+				</form>
+			</div>
+
+			<!-- changing discount -->
+			<div sec:authorize="hasAnyRole('Manager', 'SalesManager')">
+				<form class="ui form" method="post" th:action="@{/changeDiscount}">
+					<input type="number" name="discount">
+					<button type="submit" class="ui labeled icon button"><span>change discount</span>
+					</button>
+				</form>
+			</div>
+
+		</div>
+
+	</body>
+</html>

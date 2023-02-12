@@ -1,0 +1,56 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2020/21
+// Auch wenn der Bogen nicht anonymisiert ist, dürfen Sie gern Ihre Meinung offen kundtun.
+// Sowohl positive als auch negative Anmerkungen werden gern gesehen und zur stetigen Verbesserung genutzt.
+// Versuchen Sie in dieser Auswertung also stets sowohl Positives wie auch Negatives zu erwähnen.
+
+**Von: Födor **
+
+**Gruppe: 05**
+
+== Was habe ich gelernt / was habe ich nicht gelernt?
+// Ausführung der positiven und negativen Erfahrungen, die im Softwarepraktikum gesammelt wurden
+Was habe gelernt: +
+
+** HTML/Thymeleaf
+** Spring Boot
+** Maven
+** ein bisschen Hibernate
+** Struktur der Spring Projekt
+** Gruppen Arbeit
+
+Wichtige Erfahrung im Team zu Arbeiten und Kommunikations Grundlagen.
+
+Was habe ich nicht gelernt: +
+
+** JavaScript
+** Frontend Umgang
+** JSON
+** Sicherheit einzelheiten
+** Deployment
+
+== Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+// Kurze Beschreibung der Zusammenarbeit im Team. Was lief gut? Was war verbesserungswürdig? Was würden Sie das nächste Mal anders machen?
+- Das es sit sehr wichtig Ideen und Vorschläge möglichst kurz und vollschtändlich formulieren.
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+// Einschätzung der Arbeit mit den bereitgestellten und zusätzlich genutzten Frameworks. Was War gut? Was war verbesserungswürdig?
+- Es ist sehr wichtig Konzept gut zu plannen damit später weniger Code zu schreiben.
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+// Möglichst mit Beschreibung, warum die Umsetzung des von Ihnen angebrachten Vorschlages nötig ist.
+-Weniger Dokumentation, dafür mehr Programmieren
+-Ein Roadmap für Technologien die sind genutzt haben(Spring Boot, Hibernate, Maven ) damit können Studierende korrekt in Google suchen +
+und nicht Zeit für Spring MVC Framework verlieren. Mehr Information geben über Struktur von Salespoint geben. Zum Beispiel Architetur Features, +
+damit Studierende können besser verstehen was im Hintergrund passiert und schnller Framework erweitern.
+
+== Feedback für den Tutor
+// Fühlten Sie sich durch den vom Lehrstuhl bereitgestellten Tutor gut betreut? Was war positiv? Was war verbesserungswürdig?
++Immer schnell und zuverlässig geantwortet
+-Meetings oft sehr lang
+
+
+== Sonstiges und Anmerkungen
+// Welche Aspekte fanden in den oben genannten Punkten keine Erwähnung?
+Es wäre gut diese Praktikum auf spätere Semester schieben. Und statt das ein Kurs oder Modul machen wo Studierende können erfahrung sammeln über Maven +
+Spring Boot, Pipelines, Servers, Deployment(Azure bitet gratis 100 Euro damit kann man website später mit Docker ausführen) und natürlich Datenbanken. +
+Dieses Projekt macht wenig sinn  wenn man will später als Werkstunden Arbeit finden. Weil Firmen brauchen konkrete Technologien und Verständniss der Konzepten.

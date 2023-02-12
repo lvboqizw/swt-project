@@ -1,0 +1,120 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/webjars/Semantic-UI/semantic.min.js}"
+            src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link th:href="@{/webjars/Semantic-UI/semantic.min.css}" rel="stylesheet"
+          href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <link th:href="@{/resources/css/style.css}" rel="stylesheet"
+          href="../static/resources/css/style.css" type="text/css"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title th:text="#{accountancy.title}">Accountancy</title>
+</head>
+<body>
+<div class="ui container">
+    <header>
+        <h1 th:text="#{accountancy.title}">Accountancy</h1>
+    </header>
+
+    <nav th:include="navigation :: navigation"></nav>
+
+
+<!--     sec:authorize="hasAnyRole('SalesManager', 'Manager')"-->
+    <div>
+        <form method="get" role="form" class="ui form" id="form"
+            th:action="@{/accountancy/search}" th:object="${form}">
+
+            <div class="row my-5 d-flex justify-content-around">
+                <div class="row col-3">
+                    <div class="col-2">
+                        <label for="start" class="position-relative" th:text="#{accountancy.from}">From</label>
+                    </div>
+                    <div class="col-10">
+                        <input class="form-control" type="date" id="start" th:field="*{start}">
+                    </div>
+                </div>
+                <div class="row col-3">
+                    <div class="col-2">
+                        <label for="end" class="form-label" th:text="#{accountancy.to}">To</label>
+                    </div>
+                    <div class="col-10">
+                        <input class="form-control" type="date" id="end" th:field="*{end}">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <input type="text" id="username" placeholder="Username" th:field="*{username}">
+                </div>
+                <div class="col-2">
+                    <select class="form-select" aria-label="Default select example" th:field="*{searchRange}">
+                        <option selected value="all" th:text="#{accountancy.searchRange}">Search Range</option>
+                        <option value="sales" th:text="#{accountancy.sale}">Sales</option>
+                        <option value="spend" th:text="#{accountancy.spend}">Spend</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="ui button mx-0" th:text="#{accountancy.search}">Search</button>
+                </div>
+            </div>
+
+            <div th:if="${NotExist}" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong th:text="#{accountancy.notExist}">The User do not Exist </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+
+        </form>
+
+
+
+        <div class="my-5">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col" th:text="#{accountancy.date}">Date</th>
+                    <th scope="col" th:text="#{accountancy.name}">Name</th>
+                    <th scope="col" th:text="#{accountancy.amount}">Amount</th>
+                    <th scope="col" th:text="#{accountancy.ID}">ID</th>
+                    <th scope="col" >Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="pPEntry : ${PPEntryList}">
+                    <td th:text="${#temporals.format(pPEntry.getDate().get(), 'dd.MM.yyyy HH:mm')}">Mark</td>
+                    <td th:text="${pPEntry.userAccount.getUsername()}">Otto</td>
+                    <td th:text="${pPEntry.getValue()}"></td>
+                    <td th:text="${pPEntry.getId()}"></td>
+                    <td >
+                        <ul>
+                            <li th:if="${pPEntry.getValue().isPositiveOrZero()}">Income</li>
+                            <li th:unless="${pPEntry.getValue().isPositiveOrZero()}">Spend</li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <div class="col-2">
+                <h2>Sum :</h2>
+            </div>
+            <div class="col-2">
+                <h2 th:text="${Sum}">0.00</h2>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+</html>

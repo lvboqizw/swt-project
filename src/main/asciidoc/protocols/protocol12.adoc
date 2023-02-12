@@ -1,0 +1,26 @@
+= Protokoll Gruppe 05
+
+Treffen am 27.01.2021
+
+Ort:      Ort des Treffens BBB+
+Beginn:   9:20 Uhr +
+Ende:     xx:xx Uhr
+
+__Schriftführer:__ Lukas
+
+*Nächstes Treffen:* +
+3.01.2021, 13:00 Uhr, Ort des nächsten Treffens BBB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- alle Teammitglieder
+- Oliver
+
+== Bemerkungen
+Verwarnungen, besondere Vorfälle, Organisatorisches, wichtige getroffene Entscheidungen
+
+
+== Aktueller Stand
+Endspurt: Dokumentationen und Tests müssen fertig werden. Teamarbeit ist für die nächste Woche wichtig.  
+

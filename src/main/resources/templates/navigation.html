@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+</head>
+<body>
+<nav th:fragment="navigation">
+    <!--Left Menu-->
+    <div class="ui menu">
+        <a class="item" href="catalog.html" th:href="@{/catalog}"
+        th:text="#{catalog.title}"
+        >Katalog</a>
+        <a class="item" href="cart.html" th:href="@{/cart}" 
+                sec:authorize="hasAnyRole('SalesManager', 'Manager')"
+                th:text="#{navigation.kart}">Warenkorb
+            </a>
+        <a class="item" href="service.html" th:href="@{/service}"
+           sec:authorize="hasAnyRole('PrivateCustomer', 'BusinessCustomer')"
+           th:text="#{navigation.service}">Service
+        </a>
+        <a class="item" href="" th:href="@{/customers}" 
+            sec:authorize="hasAnyRole('Worker', 'SalesManager', 'Manager')"
+            th:text="#{navigation.customer}">Customer
+        </a>
+        <a class="item" href="" th:href="@{/order}" 
+            sec:authorize="hasAnyRole('PrivateCustomer', 'BusinessCustomer')"
+            th:text="#{navigation.order}">Bestellungen
+        </a>
+        <a class="item" href="accountancy.html" th:href="@{/accountancy}"
+           sec:authorize="hasAnyRole('Manager', 'SalesManager')"
+           th:text="#{accountancy.title}">
+            Accountancy
+        </a>
+        <a class="item" href="accountancy.html" th:href="@{/sales}"
+           sec:authorize="hasAnyRole('PrivateCustomer', 'BusinessCustomer')"
+           th:text="#{accountancy.sale}">
+            Sales
+        </a>
+        <a class="item" href="PcCreate.html" th:href="@{/partPicker}" 
+            th:text="#{pc.create.title}">
+            Baue deinen PC
+        </a>
+
+
+        <!--Right Menu-->
+        <div class="right menu">
+            <a class="item" href="cart.html" th:href="@{/cart}" 
+                sec:authorize="hasAnyRole('PrivateCustomer', 'BusinessCustomer')"
+                th:text="#{navigation.kart}">Warenkorb
+            </a>
+            <a class="item" href="" th:href="@{/management}"
+                sec:authorize="hasAnyRole('Worker', 'SalesManager', 'Manager')"
+                th:text="#{management.title}">
+                Management
+            </a>
+            <a class="item" href="" th:href="@{/accountdetail}"
+                sec:authorize="isAuthenticated()"
+                th:text="#{navigation.myaccount}">Mein Konto
+            </a>
+            <a class="item" href="login.html" th:href="@{/login}"
+                sec:authorize="!isAuthenticated()"
+                th:text="#{navigation.login}">Login
+            </a>
+            <a class="item" href="register.html" th:href="@{/register}"
+                sec:authorize="!isAuthenticated()"
+                th:text="#{navigation.register}">Register
+            </a>
+            <form class="item" sec:authorize="isAuthenticated()" 
+                th:action="@{/logout}" method="post">
+                
+                <button type="submit" class="ui button" 
+                    th:text="#{navigation.logout}">Logout
+                </button>
+            </form>
+        </div>
+    </div>
+    <br/>
+</nav>
+</body>
+</html>

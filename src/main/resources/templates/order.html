@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+    <title th:text="#{order.title}">Warenkorb</title>
+</head>
+<body>
+<div class="ui container">
+    <header>
+        <h1 th:text="#{order.title}">Warenkorb</h1>
+    </header>
+    <nav th:include="navigation :: navigation"></nav>
+    <div>
+        <table style="width: 80%">
+        <thead>
+        <tr>
+            <th th:text="#{order.table.status}">ID</th>
+            <th th:text="#{order.table.item}">Item</th>
+            <th th:text="#{order.table.preis}">Status</th>
+            <th th:text="#{order.table.date}">Datum</th>
+        </tr>
+        </thead>
+
+        <tbody th:remove="all-but-first">
+        <tr th:each="orderItem : ${order}">
+                <td th:text="${orderItem.orderStatus}">statusPlaceholder</td>
+                <td th:text="${orderItem.id}">id PlaceHolder</td>
+                <td th:text="${orderItem.total}">preisPlaceholder</td>
+                <td th:text="${#temporals.format(orderItem.dateCreated, 'dd.MM.yyyy HH:mm')}">datePlaceholder</td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

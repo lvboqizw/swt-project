@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<!--<link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}" />-->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+		<link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+		<title th:text="#{catalog.title}">Catalog</title>
+	</head>
+	<body>
+		<div class= "ui container">
+			<header>
+				<h1 th:text="#{catalog.title}">Catalog</h1>
+			</header>
+			<nav th:include="navigation :: navigation"></nav>
+			<div class="ui link cards">
+				<div class="ui card" th:each="hardware : ${catalog}">
+					<div>
+						<a class="header"  th:text="${hardware.name}" >name</a>
+					</div>
+					<div class="image" >
+						<a th:href="@{/hardware/{id}(id=${hardware.id})}">
+							<img class="thumbnail" th:src="@{/resources/img/test/{image}.png(image=${hardware.image})}"
+								 src="../static/resources/img/test/cpu2.png" style="width:290px; height:200px"/>
+						</a>
+					</div>
+					<div>
+						<div class="description" th:text="${{hardware.price}}">1000€</div>
+					</div>
+					<div class="extra content" th:text="${hardware.producer}">producer</div>
+					<div class="extra content" th:text="${hardware.type}">Type</div>
+					<div class="extra content" th:text="${hardware.price}">producer</div>
+					<div class="extra content" th:text="${hardware.date}">producer</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

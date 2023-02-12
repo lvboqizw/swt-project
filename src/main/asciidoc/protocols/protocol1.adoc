@@ -1,0 +1,27 @@
+= Protokoll Gruppe 5
+
+Treffen am 28.10.2020
+
+Ort:      Ort des Treffens BBB
+Beginn:   11:10 Uhr +
+Ende:     12:34 Uhr
+
+__Schriftführer:__
+Lukas
+
+*Nächstes Treffen:* +
+3.11.2020, 16:40 Uhr, Ort des nächsten Treffens: BBB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Teilnehmer Oliver(Kunde)
+- komplette Team
+
+== Bemerkungen
+- SCRUM Master benannt => Jannek
+- Ablauf für krankheitsbedingte Absagen geklärt 
+- Kundengesprächstermin(Oliver) auf Mittwoch 9:20-10:50 gelegt
+
+
+

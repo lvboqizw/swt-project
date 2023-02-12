@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <title>submitted repair request</title>
+
+</head>
+
+<body>
+<div class= "ui container">
+    <header>
+        <h1>Repair Request</h1>
+    </header>
+    <nav th:include="navigation :: navigation"></nav>
+
+        <h3>Your request was submitted successfully and will be reviewed as fast as possible.</h3>
+
+
+    <div class="column">
+
+        <h4>Please send your product to the following address once the request is confirmed. You can check the current state under service/makeRepairRequest at any time</h4>
+        <address>
+
+            Computech Waren- und Versandhaus<br>
+            Dresdner Straße 1<br>
+            01067 Dresden<br>
+            Saxony, Germany
+        </address>
+
+        <div class="column">
+
+            <form class="ui form" method="post" th:action="@{/confirmedRepairPage}">
+                <button type="submit" class="ui button"><span>back to service</span>
+                </button>
+            </form><br/>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+</body>
+
+
+
+</html>
+

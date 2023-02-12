@@ -1,0 +1,36 @@
+= Protokoll Gruppe 05
+
+Treffen am 06.01.2021
+
+Ort:      Ort des Treffens BBB+
+Beginn:   9:25 Uhr +
+Ende:     10:30 Uhr
+
+__Schriftführer:__
+Lukas
+*Nächstes Treffen:* +
+13.01.2021, 9:20 Uhr, Ort des nächsten Treffens BBB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Jannek
+- Paul
+- Sophian
+- Wei
+- Lukas
+- Oliver
+- Fedor ab 9:40
+
+== Aktueller Stand
+Test und Dokumentation(alles was public ist) ist für die nächsten paar Wochen wichtig
+
+== Planung des nächsten Sprints
+
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |Muss-Kriterien    |wichtig ist, dass alles über GUI erreichbar ist            |alle                |in Arbeit
+|…     |Tests       |Abdeckung von 40% der Lines  |alle |in Arbeit 
+|…     |Git aufräumen       |branch älter als zwei Wochen löschen oder in prototyp mergen     |alle   |in Arbeit
+|===

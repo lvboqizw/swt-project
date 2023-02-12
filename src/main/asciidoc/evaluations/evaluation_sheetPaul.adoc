@@ -1,0 +1,37 @@
+= Persönliches Feedback eines Teammitgliedes des Softwarepraktikums 2020/21
+// Auch wenn der Bogen nicht anonymisiert ist, dürfen Sie gern Ihre Meinung offen kundtun.
+// Sowohl positive als auch negative Anmerkungen werden gern gesehen und zur stetigen Verbesserung genutzt.
+// Versuchen Sie in dieser Auswertung also stets sowohl Positives wie auch Negatives zu erwähnen.
+
+**Von: Paul Darda**
+
+**Gruppe: 05**
+
+== Was habe ich gelernt / was habe ich nicht gelernt?
+// Ausführung der positiven und negativen Erfahrungen, die im Softwarepraktikum gesammelt wurden
+Ich habe gelernt mit Frameworks zu arbeiten und wie Zeitsparend aber auch zum teil frustrierend dies ist da man oft um das Frame work herum Strukturen schafft.
+
+== Welche Erfahrungen habe ich mit der Zusammenarbeit im Team gemacht?
+// Kurze Beschreibung der Zusammenarbeit im Team. Was lief gut? Was war verbesserungswürdig? Was würden Sie das nächste Mal anders machen?
+Die Zusammenarbeit im Team lief super. Probleme wurden von allen angegangen und alle waren sehr hilfsbereit. Die Aufgaben wurden auch im gerecht und gleich verteilt.
+
+== Welche Erfahrungen habe ich bei der Wiederverwendung von Bibliotheken/Frameworks (insbesondere SalesPoint) gemacht?
+// Einschätzung der Arbeit mit den bereitgestellten und zusätzlich genutzten Frameworks. Was War gut? Was war verbesserungswürdig?
+Die Frameworks sparten deutlich zeit. Problematisch ist jedoch das man doch öfters nicht mit dem Framework arbeitet, sondern drumherum.
+Da zum Teil die dokumentation nicht vollständig aufklärt oder auf Teile des Frameworks nicht von außen darauf zugegriffen werden kann.
+
+== Welche Vorschläge zur weiteren Verbesserung des Softwarepraktikums gibt es?
+// Möglichst mit Beschreibung, warum die Umsetzung des von Ihnen angebrachten Vorschlages nötig ist.
+Bessere Zeit verteilung, anfangs hat man in der woche kaum Zeit für das Praktikum gebrauch jedoch spätestens ab der Hälfte des semester hat man jedoch fast jedes Wochenende an das Praktikum verloren da man während der woche kaum Zeit dafür hat.
+Die Gruppen sollten nicht nur aus leuten desselben Studienganges bestehen, sondern gemischt sein.Dies würde ein realistischeres Praktikum förder da die Studenten dadurch mehr in dem bereich ihres Studiums Tätig währen.
+
+== Feedback für den Tutor
+// Fühlten Sie sich durch den vom Lehrstuhl bereitgestellten Tutor gut betreut? Was war positiv? Was war verbesserungswürdig?
+Der Tutor hat das Praktikum gut betreut.
+Manchmal hat er jedoch anforderungen manchmal nicht klar ausgedrückt was zu verwirrungen und Nachreichungen führte.
+
+
+== Sonstiges und Anmerkungen
+// Welche Aspekte fanden in den oben genannten Punkten keine Erwähnung?
+Man sollte in SWT1 etwas mehr auf die wichtigsten Frameworks für das Praktikum eingehen.
+Persönlich sehe ich kaum einen zusammenhang zwischen der Vorlesung und dem Praktikum.

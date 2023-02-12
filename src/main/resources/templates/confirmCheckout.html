@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:font-size="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+        <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+        <title th:text="#{confirmCheckout.title}">zur Kasse</title>
+        <style>
+        div1{
+          background-color: lightgrey;
+          width: 300px;
+          border: 5px solid black;
+          padding: 10px;
+          margin: 20px;
+        }
+        div2{
+          margin: 10px;
+        }
+        p {
+        font-size: 20px;
+        position: relative;
+        left: 50px;
+        top: 2px
+        }
+        </style>
+
+    </head>
+
+    <body>
+    <div class= "ui container">
+        <header>
+            <h1>zur Kasse</h1>
+        </header>
+        <nav th:include="navigation :: navigation"></nav>
+
+
+        <div>
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th th:text="#{cart.productName}">Name</th>
+                    <th th:text="#{cart.count}">Anzahl</th>
+                    <th th:text="#{cart.price}">Preis</th>
+                </tr>
+                </thead>
+                <tbody th:remove="all-but-first">
+
+                <tr th:each="item : ${cart} ">
+                    <td th:text="${item.productName}">placeholderItemName</td>
+                    <td th:text="${item.quantity}">placeholderItemQuantity</td>
+                    <td th:text="${{item.price}}">placeholderItemPrice</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ui column">
+            <div1 class="ui horizontal statistic">
+                <div class="label" th:text="#{cart.total}">Total</div>
+                <div2 class="value">
+                    <p th:text="${{cart.price}}">1337</p>
+                </div2>
+            </div1>
+        </div>
+
+
+        <div class="column">
+            <form class="ui form">
+               <table class="ui celled table">
+                    <thead>
+                    <tr>
+                        <th th:text="#{confirmCheckout.address}">Anschrift</th>
+                    </tr>
+                    </thead>
+                    <thead>
+                    <tr>
+                        <td contenteditable="true" th:text="${confirmCheckout}">Anschrift</td>
+                    </tr>
+                    </thead>
+                </table>
+            </form>
+        </div>
+        <div class="column">
+            <form class="ui form" method="post" th:action="@{/changeCheckoutAddress}" >
+                <input type="text" name="changeCheckoutAddress" value="0" th:value="${changeCheckoutAddress}">
+                <button type="submit" class="ui button"><span>save changes</span>
+                </button>
+            </form><br/>
+        </div>
+
+        <div class="column">
+            <form class="ui form">
+                <table class="ui celled table">
+                    <thead>
+                    <tr>
+                        <th th:text="#{confirmCheckout.billingAddress}">Rechnungsadresse</th>
+                    </tr>
+                    </thead>
+                    <thead>
+                    <tr>
+                        <td th:text="${confirmCheckoutb}" >Rechnungsadresse</td>
+
+
+                    </tr>
+                    </thead>
+                </table>
+            </form>
+        </div>
+        <div class="column">
+            <form class="ui form" method="post" th:action="@{/changeCheckoutBillingAddress}" >
+                <input type="text" name="changeCheckoutBillingAddress" value="0" th:value="${changeCheckoutBillingAddress}">
+                <button type="submit" class="ui button"><span>save changes</span>
+                </button>
+            </form><br/>
+        </div>
+
+        <div class="column">
+            <form class="ui form">
+                <table class="ui celled table">
+                    <thead>
+                    <tr>
+                        <th th:text="#{confirmCheckout.paymentMethod}">Zahlungsmethode</th>
+                    </tr>
+                    </thead>
+                    <thead>
+                    <tr>
+                        <td th:text="#{confirmCheckout.cash}">Cash</td>
+                    </tr>
+                    </thead>
+                </table>
+
+            </form>
+        </div>
+
+        <div class="column">
+            <form sec:authorize="hasRole('PrivateCustomer')" class="ui form" method="post" th:action="@{/checkout}">
+                <button type="submit" class="ui button" th:text="#{confirmCheckout.buy}">Jetzt Kaufen</button>
+            </form>
+        </div>
+
+    </div>
+    </body>
+</html>
+

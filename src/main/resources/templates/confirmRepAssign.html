@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <title>Repairassignments</title>
+</head>
+
+<body>
+<div class= "ui container">
+    <header>
+        <h1>Repairassignments</h1>
+    </header>
+    <nav th:include="navigation :: navigation"></nav>
+
+    <div class="column">
+        <div class="column">
+
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th th:text="#{rep.customer}">Name des Kunden</th>
+                    <td th:text="${customer}">none</td>
+                </tr>
+                <tr>
+                    <th th:text="#{rep.hardwaretype}">Gerättyp</th>
+                    <td th:text="${hardwaretype}">none</td>
+                </tr>
+                <tr>
+                    <th th:text="#{rep.nameOfProduct}">Name des Produktes</th>
+                    <td th:text="${nameOfProduct}">none</td>
+                </tr>
+                <tr>
+                    <th th:text="#{rep.flaw}">Mängel im Produkt</th>
+                    <td th:text="${flaw}">none</td>
+                </tr>
+                <tr>
+                    <th th:text="#{rep.warranty}">Garantie vorhanden</th>
+                    <td th:text="${warranty}">none</td>
+                </tr>
+                <tr>
+                    <th th:text="#{rep.purchaseDate}">Wann gekauft?</th>
+                    <td th:text="${purchaseDate}">none</td>
+                </tr>
+                <tr>
+                    <th th:text="#{rep.boughtAtOurStore}">Gekauft bei uns</th>
+                    <td th:text="${boughtAtOurStore}">none</td>
+                </tr>
+                </thead>
+
+            </table>
+            <form class="ui form" method="post" th:action="@{/acceptRepairRequest}">
+                <input type="hidden" name="id" value="" th:value="${ra.id}">
+                <button type="submit" class="ui button">confirm request
+                </button>
+            </form><br/>
+
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+</body>
+
+
+
+</html>
+

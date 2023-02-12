@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+    <title>Forum</title>
+
+</head>
+
+<body>
+<div class= "ui container">
+    <header>
+        <h1>Forum</h1>
+    </header>
+    <nav th:include="navigation :: navigation"></nav>
+
+    <div class="column">
+        <div class="column">
+            <form sec:authorize="hasRole('PrivateCustomer')" class="ui form" method="post" th:action="@{/sendQuestion}">
+                <th th:text="#{forum.subject}">Betreff</th>
+                <input type="text" name="subject" value="" th:value="${subject}" required>
+                <th th:text="#{forum.content}">Inhalt</th>
+                <input type="text" name="content" value="" th:value="${content}" required>
+                <button type="submit" class="ui button"><span>submit</span>
+                </button>
+            </form><br/>
+            <table class="ui celled table">
+
+                <thead>
+                <tr>
+                    <th th:text="#{question.betreff}">Betreff</th>
+                    <th th:text="#{question.antwort}">Antworten</th>
+
+                </tr>
+                </thead>
+
+                <tbody th:remove="all-but-first">
+
+                <tr th:each="question : ${userQuestions} ">
+                    <td th:text="${question.subject}">none</td>
+                    <td th:text="${question.content}">none</td>
+                </tr>
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+
+</head>
+
+<body>
+<div class= "ui container">
+    <header>
+        <h1>Fragen zu Produkten, Probleme, Anliegen etc.</h1>
+    </header>
+    <nav th:include="navigation :: navigation"></nav>
+
+
+    <div class="column">
+        <div class="column">
+
+            <form sec:authorize="hasRole('PrivateCustomer')" class="ui form" method="post" th:action="@{/sendQuestion}">
+                <th th:text="#{forum.subject}">Betreff</th>
+                <input type="text" name="subject" value="" th:value="${subject}">
+                <th th:text="#{forum.content}">Inhalt</th>
+                <input type="text" name="content" value="" th:value="${content}">
+                <button type="submit" class="ui button"><span>Abschicken</span>
+                </button>
+            </form><br/>
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th th:text="#{forum.answer}">Antwort</th>
+                </tr>
+                </thead>
+
+                <tbody th:remove="all-but-first">
+                <tr>
+                    <td th:text="${forum.answer}">none</td>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>-->

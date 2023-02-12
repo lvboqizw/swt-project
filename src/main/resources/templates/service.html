@@ -1,0 +1,174 @@
+
+    <!DOCTYPE html>
+
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+        <link rel="stylesheet" href="http://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css" type="text/css"/>
+
+        <title th:text="#{confirmCheckout.title}">Service</title>
+        <style>
+            .grid-container{
+                display: grid;
+                grid-gap: 40px 40px;
+                grid-template-areas:
+                    'main1 main2 main3'
+                    'main4 main5 main6'
+                    'main10 main7 main8';
+                padding: 10px;
+            }
+
+            .item1 {grid-area: main1}
+            .item2 {grid-area: main2}
+            .item3 {grid-area: main3}
+            .item4 {grid-area: main4}
+            .item5 {grid-area: main5}
+            .item6 {grid-area: main6}
+            .item7 {grid-area: main7}
+            .item8 {grid-area: main8}
+
+            .button-container1{
+                position: relative;
+                text-align: center;
+                padding: 0;
+                border-radius:100%;
+                overflow:hidden;
+                display: inline-block;
+                text-decoration: none;
+                vertical-align: middle;
+                background: #FFFFFF;
+                border-color: #9ACD32;
+                border-width: 5px;
+                border-style: solid;
+            }
+
+            .button-container2{
+                position: relative;
+                text-align: center;
+                padding: 0;
+                border-radius:100%;
+                overflow:hidden;
+                display: inline-block;
+                text-decoration: none;
+                vertical-align: middle;
+                background: #FFFFFF;
+                border-color: black;
+                border-width: 5px;
+                border-style: solid;
+            }
+
+            .button-images {
+                max-width: 950px;
+                margin: 75px auto;
+            }
+
+
+
+            .tooltip {
+              position: relative;
+              display: inline-block;
+
+            }
+
+
+            .tooltip .tooltiptext1 {
+              visibility: hidden;
+              width: 120px;
+              background-color: white;
+              color: black;
+              text-align: center;
+              padding: 5px 0;
+              border-radius: 6px;
+              position: absolute;
+              top: 20px;
+              left: 60%;
+              z-index: 1;
+              border-color: black;
+              border-width: 3px;
+              border-style: solid;
+            }
+
+            .tooltip .tooltiptext2 {
+              visibility: hidden;
+              width: 160px;
+              background-color: white;
+              color: #9ACD32;
+              text-align: center;
+              padding: 5px 0;
+              border-radius: 6px;
+              position: absolute;
+              top: 20px;
+              left: 60%;
+              z-index: 1;
+              border-color: #9ACD32;
+              border-width: 3px;
+              border-style: solid;
+            }
+
+            .tooltip:hover .tooltiptext1 {
+              visibility: visible;
+            }
+
+            .tooltip:hover .tooltiptext2 {
+              visibility: visible;
+            }
+
+
+
+            .button-container img{width:100%; height:auto; display:block}
+
+
+
+
+        </style>
+    </head>
+
+    <body>
+    <div class= "ui container">
+        <header>
+            <h1>Service</h1>
+        </header>
+        <nav th:include="navigation :: navigation"></nav>
+
+
+        <div class="grid-container">
+
+            <div class="item1"  sec:authorize="hasRole('PrivateCustomer')">
+                <div class="tooltip">
+                        <div class="button-images">
+                            <div class="button-container2">
+                                <form method="post" th:action="@{/service/forum}">
+                                    <input type="image" width="300px" height="300px" th:src="@{/resources/img/test/chat.png}" src="../static/resources/img/test/chat.png" alt="Submit">
+                                </form>
+                            </div>
+                        </div>
+                    <span class="tooltiptext1">contact service</span>
+                </div>
+            </div>
+
+
+            <div class="item3" sec:authorize="hasRole('PrivateCustomer')">
+                <div class="tooltip">
+                    <div class="button-images">
+                        <div class="button-container1">
+                            <form  method="post" th:action="@{/service/makeRepairRequest}">
+                                <input type="image" width="300px" height="300px" th:src="@{/resources/img/test/Repair.png}" src="../static/resources/img/test/Repair.png" alt="Submit">
+                            </form>
+                        </div>
+                    </div>
+                    <span class="tooltiptext2">make a repair request</span>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    </body>
+
+
+
+    </html>

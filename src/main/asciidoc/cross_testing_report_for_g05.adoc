@@ -1,0 +1,83 @@
+= Cross-Testing Feedback
+
+__Durchführende Gruppe: 6__
+__Anwendung von Gruppe: 5__
+
+== Getestetes System
+Welche Aufgabe/Problemstellung löst die Anwendung.
+
+Ein neues IT-System soll die Beziehung zum Kunden vereinfachen und einen Wettbewerbsvorteil für seine Geschäftskunden bieten.
+
+Die Firma CompuTech beliefert seine Kunden mit PC-Komplettsystemen sowie mit Zubehör und Verbrauchsmaterialien (CDs, Druckerpatronen, Toner,etc.). 
+Die Firma kennt zwei Arten von Kunden, Privat -und Geschäftskunden(B2C & B2B). Geschäftskunden werden von einem Mitarbeiter angelegt und mit einem vorläufigen Kennwort versehen, welches der Kunde danach ändern kann. Des Weiteren wird ein bestimmter Verkaufsleiter als Ansprechpartner zugeordnet. 
+
+Geschäftskunden können, wenn sie angemeldet sind, Bestellungen (Erweiterungen von Bestehender Hardware oder Upgrade) aufgeben sowie ihren derzeitigen EDV-Bestand einsehen. In der Bestandsanzeige soll der Kunde Geräte auswählen und mit Reparatur-oder Serviceaufträgen versehen können. 
+Privatkunden können sich selbst im System registrieren. Eine Überprüfung der Email und Postadresse kann helfen, die Gültigkeit einer Adresse zu prüfen. Hat sich der Kunde angemeldet so ist es ihm möglich sein, aus einer vorgegebenen Auswahl von Geräten ein Basismodell auszuwählen und dieses nach seinen Wünschen zu konfigurieren. Zudem soll es die Möglichkeit geben, gebrauchte Geräte wieder an CompuTech verkaufen zu können. Ein Verkaufsleiter entscheidet, zu welchem Preis Geräte zurückgekauft werden. 
+
+Dem Autraggeber ist es besonders wichtig, dass seine Geschäftsprozesse von dem zu entwickelnden IT-System vollständig abgebildet werden. Keine Aktion geschieht ohne Auftrag! 
+
+Der Verkaufsleiter nimmt eingehenden Bestellungen und Serviceanfragen entgegen, prüft diese und erstellt dann einen Auftrag an das Lager und den Service. 
+Das Lager verwaltet den Bestand aller Geräte und Verbrauchsmaterialien. Für alle Posten gibt es Mindestbestände. Werden diese unterschritten, bestellt das Lager automatisch nach. Geht ein Auftrag von einem Verkaufsleiter ein, stellt das Lager die Bestellung zusammen (Kommissionierung) und erstellt dann einen Auftrag für den Versand, welcher sich dann um Auslieferung und Aufstellung der Geräte kümmert. Für den letzten Punkt muss ein Auftrag für den Service erstellt werden. 
+
+Das System soll zudem ein „Kassenbuch“ führen, welches die Buchhaltung und den Jahresabschluss vereinfachen soll. Hierzu sollen alle Transaktionen gespeichert und nach bestimmten Filterkriterien gedruckt werden können. Auf diese Daten hat nur der Geschäftsführer und die Buchhaltung Zugriff.
+
+== Fehler-Report
+// See http://asciidoctor.org/docs/user-manual/#tables
+[options="header"]
+|===
+|Pfad |Parameter |Beschreibung |Rückgabe
+|http://localhost:8080/register |UserName HubertE, Name Ellbog, Firstname Hubert, Email me@online.de, Passwort 1234, Address Nebenstraße 1|sollte eMail validieren, dann neuen Privatkunden registrieren, stürzt aber ab|Error Page Status Code 500 org.springframework.mail.MailSendException
+|http://localhost:8080/register |UserName HubertE, Name Ellbog, Firstname Hubert, Email [meine reale e-Mail Adresse], Passwort 1234, Address Nebenstraße 1|sollte eMail validieren, dann neuen Privatkunden registrieren, stürzt aber ab|Error Page Status Code 500 org.springframework.mail.MailSendException
+|http://localhost:8080/register |UserName HubertE, Name Ellbog, Firstname Hubert, Email me@online.de, Passwort 1234, Address [leer]|sollte mich auffordern, eine Adresse einzugeben, führt aber trotzdem aus und stürzt ab|Error Page Status Code 500 org.springframework.mail.MailSendException
+|http://localhost:8080/manageAddCustomer |Name Ellbog, Firstname Hubert, Address Nebenstraße 1,  Email [meine reale e-Mail Adresse], UserName HubertE, Passwort 1234 |sollte eMail validieren, dann neuen Geschäftskunden registrieren, stürzt aber ab|Error Page Status Code 500 org.springframework.mail.MailSendException
+|http://localhost:8080/manageAddCustomer |UserName HubertE, Name Ellbog, Firstname Hubert, Address [leer],  Email [meine reale e-Mail Adresse], Passwort 1234|sollte mich auffordern, eine Adresse einzugeben, führt aber trotzdem aus und stürzt ab|Error Page Status Code 500 org.springframework.mail.MailSendException
+|http://localhost:8080/manageAddCustomer |UserName HubertE, Name Ellbog, Firstname Hubert, Address Nebenstraße 1,  Email s, Passwort 1234|sollte mich auffordern, eine formal korrekte E-Mailadresse einzugeben, führt aber trotzdem aus und stürzt ab|Error Page Status Code 500 org.springframework.mail.MailSendException
+|http://localhost:8080/accountdetail |Adresse  [leer]|sollte mich auffordern, eine Adresse einzugeben, führt aber "Adresse ändern" trotzdem aus und übergibt das leere Feld|neue Adresse ist leer
+|http://localhost:8080/accountdetail |Email [leer]|sollte mich auffordern, eine Email einzugeben, führt aber "Email ändern" trotzdem aus und übergibt das leere Feld|neue Email ist leer
+|http://localhost:8080/accountdetail |Email e |sollte mich auffordern, eine formal korrekte Email einzugeben, führt aber "Email ändern" trotzdem aus und übergibt Feld ohne gültige Email|neue Email e
+|http://localhost:8080/accountancy/search?start=2021-01-06&end=&username=&searchRange=all | nur Startdatum oder Endddatum angeklickt | Wenn man nur Startdatum oder Endddatum auswählt, erscheint beim Aufrufen der Suche eine Errorpage |  Status code: 500 Exception Request processing failed; nested exception is java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+|http://localhost:8080/accountancy/search?start=2021-01-05&end=2021-01-14&username=weedSmokedSnowman&searchRange=all | Username, welcher nicht existent ist | Gibt man einen Username, welcher nicht existent ist, ein, um die Rechnungen zu filtern, wird man auf Errorpage weitergeleitet | Exception Message: Request processing failed; nested exception is java.util.NoSuchElementException: No value present
+|http://localhost:8080/cart | BusinessCustomer angemeldet, Waren im Warenkorb | Warenkorb nicht kaufbar | Knopf zum Warenkorb kaufen wird nicht angezeigt 
+|http://localhost:8080/deleteAssign | assignment | Assignment sollte gelöscht und Order fehlschlagen | Assignment wird gelöscht, Order bleibt beim Kunden bei "Bezahlt", sollte storniert sein.
+|===
+
+== Sonstiges
+
+Optik der Anwendung:
+
+* die Icons bei "Baue deinen eigenen PC" sind wirklich sehr schön, der einheitliche Stil wirkt professionell
+* Der Katalog ist sauber geordnet durch die einheitlichen Karten für jedes Produkt.
+* generell ist die Oberfläche dezent und angenehm anzusehen gestaltet
+
+Fehlende Features:
+
+* [F0020] Passwortwiederholung fehlt
+* [F0111] Minimalkapazität des Lagers kann nicht bearbeitet werden  
+* Lager:  "Das Lager verwaltet den Bestand aller Geräte und Verbrauchsmaterialien" -> Worker hat gar keinen Überblick über die Lagerbestände (diese werden nur dem SalesManager oder Manager angezeigt)
+* Lager: "Für alle Posten gibt es Mindestbestände. Werden diese unterschritten, bestellt das Lager automatisch nach."  -> Waren werden nicht automatisch nachbestellt, es gibt auch keine Funktion zum manuellen Nachbestellen
+* [F0300] Teilbereich Filterkriterie Preis fehlt
+* [F0041] Mitarbeiter filtern fehlt
+* [F0103] Lenovo IdeaPad kann gekauft werden, wird jedoch nicht als EDV bestand eingetragen.
+* [F0103] Basismodell (IdeaPad) kann nicht direkt modifiziert werden.
+* [F0103] PartPicker legt einzelne Teile in den Warenkorb, anstatt ein Gerät mit diesen Teilen zu erstellen.
+* [F0033] Reparatur und Verkauf
+* Forumeinträge können geschrieben, aber nirgendwo gelesen werden
+
+Interaktion mit der Anwendung (Usability):
+
+* Warenkorb Tab ist auf der anderen Seite der Navigationsbar schwer zu finden
+* Das Zusammenlegen von Personal und Lager im Management Tab ist anfangs verwirrend, da Manager aber warscheinlich eine Einführung in die Software bekommen, vertretbar.
+* Im Part Picker kann man mehrere verschiedene Teile derselben Kategorie auswählen, angezeigt wird jedoch nur das zuletzt gewählte Teil-> ist ein feature(Lukas)
+* einige Aktionen werfen bei fehlerhaften Eingaben zugeschnittene Errormessages, diese sind zwar so gewollt, doch könnte das vermutlich eleganter gelöst werden als mit einem Absturz
+
+Typos:
+
+* Service -> "Reperatur" (Button) = korrekt wäre "Reparatur"
+
+== Verbesserungsvorschläge
+
+* Accountancy:  Rechnungen erst bei Suche verfügbar, eine Übersicht der letzten Rechnungen bereits ohne zu suchen wäre übersichtlicher.
+* Mitarbeiter können keine Waren kaufen (haben unter dem Warenkorb keinen Kaufen-Button), wäre ein tolles Feature für zufriedene Mitarbeiter :). Wenn ein Kundenaccount in der Logik gebraucht wird, könnte ja ein Mitarbeiter auch einen Privatkundenaccount an seinen UserAccount angehangen bekommen.
+* Im Katalog wird der Preis doppelt angezeigt
+* Im Katalog wird das Datum bei normalen Produkten im Format "Year-month-day" und bei Lenovo IdeaPad im Format "day.month.year" angezeigt, das sollte einheitlich sein
+* In der Detailansicht von Lenovo IdeaPad sehen Einzelteile und die Namen der Produkte wie Links aus, das kann verwirrend sein.

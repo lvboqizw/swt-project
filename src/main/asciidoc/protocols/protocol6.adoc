@@ -1,0 +1,40 @@
+= Protokoll Gruppe 05
+
+Treffen am 2.12.2020
+
+Ort:      Ort des Treffens BBB+
+Beginn:   9:25 Uhr +
+Ende:     10:52 Uhr
+
+__Schriftführer:__ Lukas
+
+*Nächstes Treffen:* +
+9.12.2020, 9:20 Uhr, Ort des nächsten Treffens BBB
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- das gesamte Team
+
+
+== Bemerkungen
+Verwarnungen, besondere Vorfälle, Organisatorisches, wichtige getroffene Entscheidungen
+beenden der developer_documentation ist unbedingt notwendig.
+Basisfunktionalität für in 4 Wochen: Bestellung, Katalog, Order beenden, Registrierung/Login, Benutzer alle Möglichkeiten, Mitarbeiter Aufgaben umsetzbar
+
+== Aktueller Stand
+
+Der Prototyp ist in seiner Grundform akzeptabel, aber für die Präsentation in zwei Wochen nicht ausreichend.
+Die developer_documentation muss dauerhaft in zwei Wochenintervallen geupdated werden und nicht bis zum Ende erst vollendet sein.
+
+== Planung des nächsten Sprints
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |developer_documentation beenden     |Diagramme für Dialog,Bausteinsicht, Laufzeitsicht            |alle                |in Arbeit
+|…     |Midterm Präsentation     |Präsentation vorbereiten und Testcase vorbereiten            |alle                |in Arbeit
+|…     |Kann-Kriterium White-error-Page    |einfügen einer Fehlermeldung            |alle                |in Arbeit
+|===

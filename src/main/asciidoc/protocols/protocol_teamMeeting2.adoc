@@ -1,0 +1,25 @@
+= Protokoll Gruppe 5
+
+Treffen am 4.11.2020
+
+Ort:      Ort des Treffens BBB+
+Beginn:   12:00 Uhr +
+Ende:     16:48 Uhr
+
+__Schriftführer:__
+Lukas
+
+*Nächstes Treffen:* +
+10.11.2020, 16:49 Uhr, Ort des nächsten Treffens Discord
+
+__Teilnehmer:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Jannek
+- Paul
+- Fedor
+- Wei
+- Lukas
+
+== Bemerkungen
+Bearbeitung von Kontextmodell, Top-Level-Architektur, Use-case Diagramm, aUML Diagramm, Sequenzdiagramm in Gruppen
